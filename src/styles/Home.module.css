@@ -1,0 +1,12 @@
+.container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.food {
+  z-index: -1;
+}
+
+.text {
+    transform: translate(-50%, -50%);
+}

@@ -1,0 +1,9 @@
+.container {
+  margin-top: 98vh;
+}
+
+.copyright {
+  display: flex;
+  justify-content: center;
+  color: var(--fourth-color)
+}
