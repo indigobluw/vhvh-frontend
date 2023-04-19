@@ -1,0 +1,23 @@
+.ul {
+  display: flex;
+  justify-content: right;
+  background-color: var(--primary-color);
+  align-items: center;
+}
+
+.li {
+  margin: 1em;
+  color: var(--fourth-color);
+}
+
+@media (max-width: 480px) {
+  .li {
+    display: none;
+  }
+}
+
+@media (min-width: 481px) {
+  .burger {
+    display: none;
+  }
+}
