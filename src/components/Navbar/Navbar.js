@@ -7,9 +7,15 @@ export default function Navbar() {
     <div>
       <navbar className={styles.navbar}>
         <ul className={styles.ul}>
-          <li className={styles.li}>Home</li>
-          <li className={styles.li}>Contact</li>
-          <li className={styles.li}>About us</li>
+          <Link href="/">
+            <li className={styles.li}>Home</li>
+          </Link>
+          <Link href="/comingSoon">
+            <li className={styles.li}>Contact</li>
+          </Link>
+          <Link href="/comingSoon">
+            <li className={styles.li}>About us</li>
+          </Link>
           <li className={styles.burger}>
             <MenuIcon fontSize="large" color="primary" />
           </li>
