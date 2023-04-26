@@ -1,8 +1,10 @@
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
-import styles from "src/styles/Login.module.css";
+import styles from "src/styles/Login.module.scss";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -40,28 +42,32 @@ export default function Login() {
       .catch((error) => console.log("error", error));
   }
   if (isLoggedIn == true) {
-    return <h1>You're logged in!</h1>;//<Navigate to="/myPage" />;
-   
+    return <h1>You're logged in!</h1>; //<Navigate to="/myPage" />;
   }
   return (
     <div>
       <Navbar />
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
-        <input
+        <TextField
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          id="outlined-basic"
+          label="Username"
           type="username"
-          placeholder="your username"
+          className={styles.username}
         />
-        <label htmlFor="password">Password</label>
-        <input
+        <TextField
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          id="outlined-password-input"
+          label="Password"
           type="password"
-          placeholder="***"
+          autoComplete="current-password"
+          className={styles.password}
         />
-        <button type="submit">Logga in</button>
+        <Button variant="contained" type="submit" className={styles.button}>
+          Logga in
+        </Button>
       </form>
       <Footer />
     </div>

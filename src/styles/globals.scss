@@ -1,16 +1,11 @@
+@import '/colors.scss';
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-
-  /* Color palette */
-  --primary-color: rgb(22, 105, 122);
-  --secondary-color: rgb(72, 159, 181);
-  --third-color: rgb(130, 192, 204);
-  --fourth-color: rgb(237, 231, 227);
-  --fifth-color: rgb(255, 166, 43);
 }
 
 @media (prefers-color-scheme: dark) {

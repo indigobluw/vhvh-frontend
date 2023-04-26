@@ -1,13 +1,15 @@
+@import '/colors.scss';
+
 .ul {
   display: flex;
   justify-content: right;
-  background-color: var(--primary-color);
+  background-color: $Moonstone;
   align-items: center;
 }
 
 .li {
   margin: 1em;
-  color: var(--fourth-color);
+  color: $Isabelline;
 }
 
 @media (max-width: 480px) {

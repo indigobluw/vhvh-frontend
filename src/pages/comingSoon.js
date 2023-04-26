@@ -1,4 +1,4 @@
-import styles from "src/styles/ComingSoon.module.css";
+import styles from "src/styles/ComingSoon.module.scss";
 import Link from "next/link";
 
 export default function ComingSoon() {

@@ -1,4 +1,4 @@
-import styles from "src/components/Navbar/Navbar.module.css";
+import styles from "src/components/Navbar/Navbar.module.scss";
 import Link from "next/link";
 import MenuIcon from "@mui/icons-material/Menu";
 

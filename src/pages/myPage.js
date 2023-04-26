@@ -1,4 +1,4 @@
-import styles from "src/styles/MyPage.module.css";
+import styles from "src/styles/MyPage.module.scss";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 

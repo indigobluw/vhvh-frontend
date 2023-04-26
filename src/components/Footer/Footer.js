@@ -1,4 +1,4 @@
-import styles from "src/components/Footer/Footer.module.css";
+import styles from "src/components/Footer/Footer.module.scss";
 import CopyrightIcon from "@mui/icons-material/Copyright";
 
 export default function Footer() {
