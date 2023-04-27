@@ -17,14 +17,14 @@
 .button {
   padding: 1em;
   margin: 1em;
-  background-color: var(--secondary-color);
+  background-color: $Moonstone;
   border: 1px solid transparent;
   border-radius: 20px;
 }
 
 .button:hover {
   cursor: pointer;
-  background-color: var(--primary-color);
+  background-color: $CaribbeanCurrent;
 }
 
 .button:active {

@@ -17,7 +17,7 @@ export default function Navbar() {
             <li className={styles.li}>About us</li>
           </Link>
           <li className={styles.burger}>
-            <MenuIcon fontSize="large" color="primary" />
+            <MenuIcon fontSize="large" color="$Moonstone" />
           </li>
         </ul>
       </navbar>
