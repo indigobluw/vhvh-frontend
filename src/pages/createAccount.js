@@ -15,7 +15,7 @@ export default function CreateAccount() {
         <input
           className={styles.input}
           type="password"
-          placeholder="password"
+          placeholder="Lösenord"
         ></input>
         <button className={styles.button} type="submit">
           Skapa konto
