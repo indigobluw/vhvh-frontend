@@ -4,12 +4,12 @@ import Link from "next/link";
 export default function ComingSoon() {
   return (
     <div className={styles.container}>
-      <h1>Hang on...</h1>
-      <h2>We're currently working on this page</h2>
-      <h2>Coming soon</h2>
+      <h1>Häng kvar...</h1>
+      <h2>Vi arbetar för nuvarande på den här sidan</h2>
+      <h2>Kommer snart</h2>
       <Link href="/">
       <br></br>
-        <h3>Go back?</h3>
+        <h3>Gå tillbaka till startsidan?</h3>
       </Link>
     </div>
   );
