@@ -54,6 +54,7 @@ export default function Login() {
           id="outlined-basic"
           label="Användarnamn"
           type="username"
+          autoComplete="username"
           className={styles.username}
         />
         <TextField
