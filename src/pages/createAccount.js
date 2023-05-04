@@ -123,8 +123,20 @@ export default function CreateAccount(props) {
                 label="Konto-typ"
                 onChange={handleChangedRole}
               >
-                <MenuItem value={"Användare"}>Användare</MenuItem>
-                <MenuItem value={"Administratör"}>Administratör</MenuItem>
+                <MenuItem
+                  label={"Användare"}
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                >
+                  Användare
+                </MenuItem>
+                <MenuItem
+                  label={"Administratör"}
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                >
+                  Administratör
+                </MenuItem>
               </Select>
             </FormControl>
           </Box>
