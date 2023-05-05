@@ -5,7 +5,6 @@ import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Link from "next/link";
-import Checkbox from "@mui/material/Checkbox";
 import InputLabel from "@mui/material/InputLabel";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
@@ -19,10 +18,6 @@ export default function CreateAccount(props) {
   const [role, setRole] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
-  const label = { inputProps: { "aria-label": "Kom ihåg mig" } };
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleChangedRole = (event) => {
     setRole(event.target.value);
@@ -124,14 +119,14 @@ export default function CreateAccount(props) {
                 onChange={handleChangedRole}
               >
                 <MenuItem
-                  label={"Användare"}
+                  label={"USER"}
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
                 >
                   Användare
                 </MenuItem>
                 <MenuItem
-                  label={"Administratör"}
+                  label={"ADMIN"}
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
                 >
@@ -145,11 +140,8 @@ export default function CreateAccount(props) {
           </Button>
         </form>
         <p className={styles.lessmargin}>
-          Kom ihåg mig? <Checkbox {...label} />{" "}
-        </p>
-        <p className={styles.lessmargin}>
           {" "}
-          Har du redan ett konto? &nbsp; <Link href="/login">Logga in!</Link>
+          Har du redan ett konto?&nbsp; <Link href="/login">Logga in!</Link>
         </p>
       </div>
       <Footer />
