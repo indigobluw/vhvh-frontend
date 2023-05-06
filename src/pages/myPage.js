@@ -7,8 +7,7 @@ export default function CreateAccount() {
     <div>
       <Navbar />
       <div>
-        <h2>Welcome</h2>
-        <h3>user</h3>
+        <h2>Välkommen!</h2>
       </div>
       <Footer />
     </div>

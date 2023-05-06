@@ -2,73 +2,68 @@ import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import styles from "src/styles/Login.module.scss";
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { useRouter } from "next/router";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
 export default function Login() {
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    const payload = JSON.stringify({
+  function sendLoginRequest() {
+    const requestBody = {
       username: username,
       password: password,
-    });
-
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: JSON.parse(payload),
-      redirect: "follow",
     };
 
-    console.log(requestOptions);
-    fetch("http://localhost:8080/", requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", data.user);
-        setIsLoggedIn(true);
-        console.log(data.token);
-        console.log(data.user);
-      })
-      .catch((error) => console.log("error", error));
+    fetch("http://localhost:8080/api/login", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "post",
+      body: JSON.stringify(requestBody),
+    }).then((response) => {
+      if (response.status === 200) {
+        console.log("Du är inloggad!");
+        router.push("myPage");
+        return response.text();
+      } else {
+        console.log("Oj! Något gick fel!");
+      }
+    });
   }
-  if (isLoggedIn == true) {
-    return <h1>You're logged in!</h1>; //<Navigate to="/myPage" />;
-  }
+
   return (
     <div>
       <Navbar />
-      <form onSubmit={handleSubmit}>
+      <div>
         <TextField
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(event) => setUsername(event.target.value)}
           id="outlined-basic"
-          label="Username"
+          label="Användarnamn"
           type="username"
           className={styles.username}
         />
         <TextField
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(event) => setPassword(event.target.value)}
           id="outlined-password-input"
-          label="Password"
+          label="Lösenord"
           type="password"
           autoComplete="current-password"
           className={styles.password}
         />
-        <Button variant="contained" type="submit" className={styles.button}>
+        <Button
+          variant="contained"
+          type="submit"
+          className={styles.button}
+          onClick={() => sendLoginRequest()}
+        >
           Logga in
         </Button>
-      </form>
+      </div>
       <Footer />
     </div>
   );
