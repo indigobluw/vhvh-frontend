@@ -12,13 +12,13 @@ export default function Home() {
       <Navbar />
       <div>
         <Link href="/login">
-          <button className={styles.button}>Login</button>
+          <button className={styles.button}>Logga in</button>
         </Link>
         <Link href="/myPage">
-          <button className={styles.button}>My page</button>
+          <button className={styles.button}>Min sida</button>
         </Link>
         <Link href="/createAccount">
-          <button className={styles.button}>Create Account</button>
+          <button className={styles.button}>Skapa konto</button>
         </Link>
         <div className={styles.text}>
           <h1>VHVH</h1>
