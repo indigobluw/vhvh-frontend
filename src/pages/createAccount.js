@@ -10,7 +10,7 @@ export default function CreateAccount() {
         <input
           className={styles.input}
           type="text"
-          placeholder="username"
+          placeholder="Användarnamn"
         ></input>
         <input
           className={styles.input}

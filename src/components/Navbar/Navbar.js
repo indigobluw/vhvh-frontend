@@ -8,13 +8,13 @@ export default function Navbar() {
       <navbar className={styles.navbar}>
         <ul className={styles.ul}>
           <Link href="/">
-            <li className={styles.li}>Home</li>
+            <li className={styles.li}>Startsida</li>
           </Link>
           <Link href="/comingSoon">
-            <li className={styles.li}>Contact</li>
+            <li className={styles.li}>Kontakt</li>
           </Link>
           <Link href="/comingSoon">
-            <li className={styles.li}>About us</li>
+            <li className={styles.li}>Om oss</li>
           </Link>
           <li className={styles.burger}>
             <MenuIcon fontSize="large" color="$Moonstone" />

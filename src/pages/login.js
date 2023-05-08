@@ -42,7 +42,7 @@ export default function Login() {
       .catch((error) => console.log("error", error));
   }
   if (isLoggedIn == true) {
-    return <h1>You're logged in!</h1>; //<Navigate to="/myPage" />;
+    return <h1>Du är inloggad!</h1>; //<Navigate to="/myPage" />;
   }
   return (
     <div>
@@ -52,7 +52,7 @@ export default function Login() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           id="outlined-basic"
-          label="Username"
+          label="Användarnamn"
           type="username"
           className={styles.username}
         />
@@ -60,7 +60,7 @@ export default function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           id="outlined-password-input"
-          label="Password"
+          label="Lösenord"
           type="password"
           autoComplete="current-password"
           className={styles.password}
