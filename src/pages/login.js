@@ -23,15 +23,28 @@ export default function Login() {
       },
       method: "post",
       body: JSON.stringify(requestBody),
-    }).then((response) => {
-      if (response.status === 200) {
-        console.log("Du är inloggad!");
-        router.push("myPage");
-        return response.text();
-      } else {
-        console.log("Oj! Något gick fel!");
-      }
-    });
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          console.log("Du är inloggad!");
+          return response.json();
+        } else {
+          console.log("Oj! Något gick fel!");
+        }
+      })
+      .then((data) => {
+        localStorage.setItem("token", data.token);
+        console.log(data.token);
+
+        fetch("http://localhost:8080/api/login", {
+          headers: {
+            Authorization: `Bearer ${data.token}`,
+          },
+        })
+          .then((response) => response.text())
+          .then((data) => console.log(data))
+          .catch((error) => console.error(error));
+      });
   }
 
   return (
