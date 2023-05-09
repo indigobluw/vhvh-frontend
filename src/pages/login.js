@@ -19,7 +19,7 @@ export default function Login() {
     setChecked(event.target.checked);
   };
 
-  function sendLoginRequest() {
+  function sendLoginRequest(e) {
     const requestBody = {
       username: username,
       password: password,
@@ -29,7 +29,7 @@ export default function Login() {
       headers: {
         "Content-Type": "application/json",
       },
-      method: "post",
+      method: "POST",
       body: JSON.stringify(requestBody),
     }).then((response) => {
       if (response.status === 200) {
@@ -52,7 +52,7 @@ export default function Login() {
       <Navbar />
       <div className={styles.container}>
         <h1 className={styles.title}>Välkommen tillbaka!</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={sendLoginRequest}>
           <TextField
             value={username}
             onChange={(e) => setUsername(e.target.value)}
