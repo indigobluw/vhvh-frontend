@@ -15,7 +15,7 @@ export default function CreateAccount(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState("Användare");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
 
@@ -83,7 +83,6 @@ export default function CreateAccount(props) {
           <TextField
             required
             value={password}
-            type={showPassword ? "text" : "password"}
             onChange={(e) => setPassword(e.target.value)}
             id="outlined-password-input"
             label="Lösenord"
@@ -120,14 +119,14 @@ export default function CreateAccount(props) {
               >
                 <MenuItem
                   label={"USER"}
-                  value={role}
+                  value={"Användare"}
                   onChange={(e) => setRole(e.target.value)}
                 >
                   Användare
                 </MenuItem>
                 <MenuItem
                   label={"ADMIN"}
-                  value={role}
+                  value={"Administratör"}
                   onChange={(e) => setRole(e.target.value)}
                 >
                   Administratör

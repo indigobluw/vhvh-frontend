@@ -38,7 +38,7 @@ export default function Login(props) {
     };
 
     console.log(requestOptions);
-    fetch("http://localhost:8080/", requestOptions)
+    fetch("http://localhost:8080/api/login", requestOptions)
       .then((response) => response.json())
       .then((data) => {
         localStorage.setItem("token", data.token);
@@ -49,7 +49,7 @@ export default function Login(props) {
       })
       .catch((error) => console.log("error", error));
   }
-  if (isLoggedIn == true) {
+  if (isLoggedIn == true) { //blir just nu alltid true...
     return <h1>Du är inloggad!</h1>; //<Navigate to="/myPage" />;
   }
   return (
