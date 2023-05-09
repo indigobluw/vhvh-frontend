@@ -1,0 +1,19 @@
+@import "/colors.scss";
+
+.fyraNollFyra {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: red;
+}
+
+.rubrik {
+  margin: 2em;
+}
+
+.button {
+  background-color: $OrangePeel;
+  color: $Black;
+  margin: 2em;
+}

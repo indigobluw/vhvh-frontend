@@ -1,12 +1,14 @@
 import Navbar from "@/components/Navbar/Navbar";
 import styles from "src/styles/Login.module.scss";
 import { useState } from "react";
+import { useRouter } from "next/router";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
 
-export default function Login(props) {
+export default function Login() {
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,39 +19,34 @@ export default function Login(props) {
     setChecked(event.target.checked);
   };
 
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    const payload = JSON.stringify({
+  function sendLoginRequest() {
+    const requestBody = {
       username: username,
       password: password,
-    });
-
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: JSON.parse(payload),
-      redirect: "follow",
     };
 
-    console.log(requestOptions);
-    fetch("http://localhost:8080/api/login", requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", data.user);
-        setIsLoggedIn(true);
-        console.log(data.token);
-        console.log(data.user);
-      })
-      .catch((error) => console.log("error", error));
+    fetch("http://localhost:8080/api/login", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "post",
+      body: JSON.stringify(requestBody),
+    }).then((response) => {
+      if (response.status === 200) {
+        console.log("Du är inloggad!");
+        return response.json().then((data) => {
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("userId", data.userId);
+          localStorage.setItem("username", data.username);
+          console.log(data.token);
+        });
+      } else {
+        console.log("Oj! Något gick fel!");
+      }
+    });
+    //router.push("myPage");
   }
-  if (isLoggedIn == true) { //blir just nu alltid true...
-    return <h1>Du är inloggad!</h1>; //<Navigate to="/myPage" />;
-  }
+
   return (
     <div>
       <Navbar />
