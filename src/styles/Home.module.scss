@@ -1,8 +1,11 @@
-@import 'colors.scss';
+@import "colors.scss";
 
 .container {
   background-image: url("/images/food.jpg");
-  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 80em;
+  overflow: hidden;
 }
 
 .food {
@@ -10,8 +13,12 @@
 }
 
 .text {
-  transform: translate(-50%, -50%);
-  color:$Moonstone;
+  color: $Moonstone;
+  display: flex;
+  justify-content: center;
+  margin-top: 9em;
+  text-shadow: 2px 1px $CaribbeanCurrent;
+  font-size: 50px;
 }
 
 .button {
