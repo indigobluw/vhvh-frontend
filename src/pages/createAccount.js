@@ -1,6 +1,5 @@
 import styles from "src/styles/Login.module.scss";
 import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer/Footer";
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -143,7 +142,6 @@ export default function CreateAccount(props) {
           Har du redan ett konto?&nbsp; <Link href="/login">Logga in!</Link>
         </p>
       </div>
-      <Footer />
     </div>
   );
 }

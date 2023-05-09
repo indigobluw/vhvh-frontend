@@ -1,8 +1,6 @@
 import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer/Footer";
 import styles from "src/styles/Login.module.scss";
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
@@ -93,7 +91,6 @@ export default function Login(props) {
           <Link href="/createAccount">Skapa ett här!</Link>
         </p>
       </div>
-      <Footer />
     </div>
   );
 }
