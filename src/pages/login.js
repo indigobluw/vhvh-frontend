@@ -23,40 +23,30 @@ export default function Login() {
       },
       method: "post",
       body: JSON.stringify(requestBody),
-    })
-      .then((response) => {
-        if (response.status === 200) {
-          console.log("Du är inloggad!");
-          return response.json();
-        } else {
-          console.log("Oj! Något gick fel!");
-          throw new Error("Failed to log in");
-        }
-      })
-      .then((data) => {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("userId", data.userId);
-        localStorage.setItem("username", data.username);
-        console.log(data.token);
-        // Add the Authorization header to subsequent requests
-        const token = localStorage.getItem("token");
-        const headers = {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        };
-        fetch("http://localhost:8080/api/protectedResource", {
-          headers,
-        }).then((response) => {
-          if (response.status === 200) {
-            console.log("Success");
-          } else {
-            console.log("Failed");
-          }
+    }).then((response) => {
+      if (response.status === 200) {
+        console.log("Du är inloggad!");
+        return response.json().then((data) => {
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("userId", data.userId);
+          localStorage.setItem("username", data.username);
+
+          const requestOptions = {
+            headers: {
+              Authorization: `Bearer ${data.token}`,
+            },
+            method: "get",
+          };
+
+          fetch("/myPage", requestOptions)
+            .then((response) => response.json())
+            .then((data) => console.log(data));
         });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+      } else {
+        console.log("Oj! Något gick fel!");
+      }
+    });
+    //router.push("myPage");
   }
 
   return (
