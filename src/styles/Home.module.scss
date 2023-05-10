@@ -4,21 +4,25 @@
   background-image: url("/images/food.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 80em;
+  height: 60em;
   overflow: hidden;
 }
 
-.food {
-  z-index: -1;
+.text {
+  color: $OrangePeel;
+  margin-top: 5em;
+  text-shadow: 2px 1px $Black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.text {
-  color: $Moonstone;
-  display: flex;
-  justify-content: center;
-  margin-top: 9em;
-  text-shadow: 2px 1px $CaribbeanCurrent;
+.title {
   font-size: 50px;
+}
+
+.subtitle {
+  font-size: 35px;
 }
 
 .button {
@@ -37,4 +41,52 @@
 .button:active {
   transform: translateY(2px);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 480px) {
+  .text {
+    margin-top: 1em;
+  }
+
+  .title {
+    font-size: 10px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .container {
+    height: 60em;
+  }
+
+  .text {
+    margin-top: 15em;
+    margin-left: 10em;
+  }
+
+  .title {
+    font-size: 70px;
+  }
+
+  .subtitle {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 1281px) {
+  .text {
+    margin-left: 7em;
+    margin-top: 20em;
+  }
+
+  .title {
+    font-size: 90px;
+  }
+
+  .subtitle {
+    font-size: 70px;
+  }
 }

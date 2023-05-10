@@ -14,7 +14,7 @@ export default function CreateAccount(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [role, setRole] = useState("Användare");
+  const [role, setRole] = useState("USER");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
 
@@ -33,11 +33,7 @@ export default function CreateAccount(props) {
       password: password,
       firstname: firstname,
       lastname: lastname,
-      role: role,
-      isAccountNonExpired: "true",
-      isAccountNonLocked: "true",
-      isCredentialsNonExpired: "true",
-      isEnabled: "true",
+      role: role
     });
 
     const requestOptions = {
@@ -93,7 +89,7 @@ export default function CreateAccount(props) {
             value={firstname}
             onChange={(e) => setFirstname(e.target.value)}
             id="outlined-basic"
-            label="Förstanamn"
+            label="Förnamn"
             type="text"
             autoComplete="given-name"
             className={styles.password}
@@ -117,15 +113,13 @@ export default function CreateAccount(props) {
                 onChange={handleChangedRole}
               >
                 <MenuItem
-                  label={"USER"}
-                  value={"Användare"}
+                  value={"USER"}
                   onChange={(e) => setRole(e.target.value)}
                 >
                   Användare
                 </MenuItem>
                 <MenuItem
-                  label={"ADMIN"}
-                  value={"Administratör"}
+                  value={"ADMIN"}
                   onChange={(e) => setRole(e.target.value)}
                 >
                   Administratör

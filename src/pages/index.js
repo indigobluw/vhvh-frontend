@@ -21,8 +21,8 @@ export default function Home() {
           <button className={styles.button}>Skapa konto</button>
         </Link>
         <div className={styles.text}>
-          <h1>VHVH</h1>
-          <p>- Vad har vi hemma?</p>
+          <h1 className={styles.title}>VHVH</h1>
+          <p className={styles.subtitle}>- Vad har vi hemma?</p>
         </div>
       </div>
       <Footer />
