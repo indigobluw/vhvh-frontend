@@ -9,14 +9,17 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
+import { useRouter } from "next/router";
+import Alert from "@mui/material/Alert";
 
 export default function CreateAccount(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userCreated, setUserCreated] = useState(false);
   const [role, setRole] = useState("USER");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
+  const router = useRouter();
 
   const handleChangedRole = (event) => {
     setRole(event.target.value);
@@ -33,7 +36,7 @@ export default function CreateAccount(props) {
       password: password,
       firstname: firstname,
       lastname: lastname,
-      role: role
+      role: role,
     });
 
     const requestOptions = {
@@ -45,18 +48,19 @@ export default function CreateAccount(props) {
 
     fetch("http://localhost:8080/api/registeruser", requestOptions)
       .then((response) => response.json())
-      .then((data) => {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", data.user);
-        setIsLoggedIn(true);
-        console.log(data.token);
-        console.log(data.user);
-      })
+      .then(setUserCreated(true))
       .catch((error) => console.log("error", error));
   }
 
-  if (isLoggedIn == true) {
-    return <h1>Du har skapat ett konto!</h1>;
+  if (userCreated == true) {
+    return (
+      <div>
+        <Alert severity="success">Grattis du har skapat ett konto!</Alert>
+        {setTimeout(() => {
+          router.push("/login");
+        }, 5000)}
+      </div>
+    );
   }
 
   return (
