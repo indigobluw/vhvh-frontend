@@ -15,6 +15,8 @@ import Alert from "@mui/material/Alert";
 export default function CreateAccount(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [invalidPassword, setInvalidPassword] = useState(false);
+  const [passwordDuplicated, setPasswordDuplicated] = useState("");
   const [userCreated, setUserCreated] = useState(false);
   const [role, setRole] = useState("USER");
   const [firstname, setFirstname] = useState("");
@@ -27,6 +29,13 @@ export default function CreateAccount(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    const regex = /^(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+    if (!regex.test(password) || password !== passwordDuplicated) {
+      setInvalidPassword(true);
+      return;
+    }
 
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
@@ -58,7 +67,7 @@ export default function CreateAccount(props) {
         <Alert severity="success">Grattis du har skapat ett konto!</Alert>
         {setTimeout(() => {
           router.push("/login");
-        }, 5000)}
+        }, 3500)}
       </div>
     );
   }
@@ -83,10 +92,27 @@ export default function CreateAccount(props) {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            error={invalidPassword}
+            helperText={
+              invalidPassword
+                ? "Lösenordet måste innehålla minst 8 tecken samt en stor och liten bokstav"
+                : ""
+            }
             id="outlined-password-input"
             label="Lösenord"
             className={styles.password}
           />
+          <TextField
+            required
+            value={passwordDuplicated}
+            onChange={(e) => setPasswordDuplicated(e.target.value)}
+            error={invalidPassword}
+            helperText={invalidPassword ? "Löseorden matchar inte" : ""}
+            id="outlined-password-confirm-input"
+            label="Confirm Password"
+            type="password"
+          />
+
           <br></br>
           <TextField
             required
