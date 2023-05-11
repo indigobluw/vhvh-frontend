@@ -5,6 +5,9 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+
+
+
 export default function Login() {
   const router = useRouter();
   const [username, setUsername] = useState("");
@@ -41,11 +44,12 @@ export default function Login() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         };
-        fetch("http://localhost:8080/api/protectedResource", {
+        fetch("http://localhost:8080/api/getAuthenticatedUser", {
           headers,
         }).then((response) => {
           if (response.status === 200) {
             console.log("Success");
+            router.push("/myPage")
           } else {
             console.log("Failed");
           }
