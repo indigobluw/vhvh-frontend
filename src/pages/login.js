@@ -36,7 +36,6 @@ export default function Login() {
         localStorage.setItem("userId", data.userId);
         localStorage.setItem("username", data.username);
         console.log(data.token);
-        // Add the Authorization header to subsequent requests
         const token = localStorage.getItem("token");
         const headers = {
           "Content-Type": "application/json",
@@ -61,7 +60,8 @@ export default function Login() {
   return (
     <div>
       <Navbar />
-      <div>
+      <h1 className={styles.logintitle}>Logga in här</h1>
+      <div className={styles.login}>
         <TextField
           value={username}
           onChange={(event) => setUsername(event.target.value)}

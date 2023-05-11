@@ -1,1 +1,36 @@
-@import '/colors.scss';
+@import "/colors.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 1em;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5em;
+  background-color: $OrangePeel;
+  border-radius: 10px 50px;
+  padding: 1em;
+}
+
+.places,
+.myData {
+  margin: 0.5em;
+  padding: 2em;
+  border-radius: 40px;
+  background-color: $SkyBlue;
+}
+
+.myData {
+  background-color: $Isabelline;
+}
