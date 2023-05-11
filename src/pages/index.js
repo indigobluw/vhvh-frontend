@@ -8,9 +8,9 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div>
       <Navbar />
-      <div>
+      <div className={styles.container}>
         <Link href="/login">
           <button className={styles.button}>Logga in</button>
         </Link>
@@ -21,8 +21,8 @@ export default function Home() {
           <button className={styles.button}>Skapa konto</button>
         </Link>
         <div className={styles.text}>
-          <h1>VHVH</h1>
-          <p>- Vad har vi hemma?</p>
+          <h1 className={styles.title}>VHVH</h1>
+          <p className={styles.subtitle}>- Vad har vi hemma?</p>
         </div>
       </div>
       <Footer />

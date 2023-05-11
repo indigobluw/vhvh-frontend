@@ -4,8 +4,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 export default function Navbar() {
   return (
-    <div>
-      <navbar className={styles.navbar}>
+    <div className={styles.navbar}>
+      <navbar>
         <ul className={styles.ul}>
           <Link href="/">
             <li className={styles.li}>Startsida</li>
@@ -17,7 +17,7 @@ export default function Navbar() {
             <li className={styles.li}>Om oss</li>
           </Link>
           <li className={styles.burger}>
-            <MenuIcon fontSize="large" color="$Moonstone" />
+            <MenuIcon fontSize="large" />
           </li>
         </ul>
       </navbar>
