@@ -7,6 +7,13 @@
   align-items: center;
 }
 
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .username,
 .password {
   margin: 1em 2em 1em 2em;
@@ -24,6 +31,7 @@
 .button,
 .margin {
   margin: 3em;
+  background-color: $Moonstone;
 }
 
 .buttonl {
@@ -36,9 +44,16 @@
   display: flex;
 }
 
-.title {
+.title,
+.logintitle {
   display: flex;
   justify-content: center;
   padding: 1em 1em 2em 1em;
   background-color: $CaribbeanCurrent;
+}
+
+.logintitle {
+  margin: 0.5em;
+  background-color: $OrangePeel;
+  border-radius: 10px 50px;
 }
