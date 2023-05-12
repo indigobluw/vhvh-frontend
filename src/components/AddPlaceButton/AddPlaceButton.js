@@ -1,5 +1,4 @@
 import styles from "src/components/AddPlaceButton/AddPlaceButton.module.scss";
-import { useRouter } from "next/router";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";

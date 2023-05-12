@@ -2,6 +2,7 @@ import styles from "src/components/Place/Place.module.scss";
 import AddIcon from "@mui/icons-material/Add";
 import IconButton from "@mui/material/IconButton";
 import AddPlaceButton from "@/components/AddPlaceButton/AddPlaceButton";
+import PlaceObjects from "../PlaceObjects/PlaceObjects";
 
 export default function Place() {
   return (
@@ -11,9 +12,10 @@ export default function Place() {
         <div className={styles.addbutton}>
           <AddPlaceButton />
         </div>
-        <p></p>
       </div>
-      <div>plats 1 osv..</div>
+      <div>
+        <PlaceObjects />
+      </div>
     </div>
   );
 }
