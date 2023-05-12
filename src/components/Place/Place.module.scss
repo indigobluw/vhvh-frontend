@@ -1,7 +1,17 @@
 @import "/colors.scss";
 
 .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $SkyBlue;
+  padding: 1em;
+  border-radius: 40px;
+}
+
+.title {
+}
+
+.addbutton {
+  padding: 0.4em;
 }
