@@ -13,6 +13,9 @@ export default function LogoutButton() {
       .then((response) => {
         if (response.status === 200) {
           localStorage.removeItem("token");
+          localStorage.removeItem("userId");
+          localStorage.removeItem("username");
+          localStorage.removeItem("userRole");
           console.log("Du loggade ut!");
           return response.json();
         } else {
