@@ -35,6 +35,7 @@ export default function Login() {
         localStorage.setItem("token", data.token);
         localStorage.setItem("userId", data.userId);
         localStorage.setItem("username", data.username);
+        localStorage.setItem("userRole", data.userRole);
         console.log(data.token);
         const token = localStorage.getItem("token");
         const headers = {
@@ -46,7 +47,12 @@ export default function Login() {
         }).then((response) => {
           if (response.status === 200) {
             console.log("Success");
-            router.push("/myPage");
+            if (localStorage.getItem("userRole") == "ADMIN") {
+              router.push("/admin");
+            }
+            else {
+              router.push("/myPage");
+            }
           } else {
             console.log("Failed");
           }
