@@ -35,8 +35,8 @@ export default function Login() {
         localStorage.setItem("token", data.token);
         localStorage.setItem("userId", data.userId);
         localStorage.setItem("username", data.username);
+        localStorage.setItem("userRole", data.userRole);
         console.log(data.token);
-        // Add the Authorization header to subsequent requests
         const token = localStorage.getItem("token");
         const headers = {
           "Content-Type": "application/json",
@@ -47,7 +47,12 @@ export default function Login() {
         }).then((response) => {
           if (response.status === 200) {
             console.log("Success");
-            router.push("/myPage");
+            if (localStorage.getItem("userRole") == "ADMIN") {
+              router.push("/admin");
+            }
+            else {
+              router.push("/myPage");
+            }
           } else {
             console.log("Failed");
           }
@@ -61,7 +66,8 @@ export default function Login() {
   return (
     <div>
       <Navbar />
-      <div>
+      <h1 className={styles.logintitle}>Logga in här</h1>
+      <div className={styles.login}>
         <TextField
           value={username}
           onChange={(event) => setUsername(event.target.value)}
