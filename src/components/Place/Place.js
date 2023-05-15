@@ -2,7 +2,7 @@ import styles from "src/components/Place/Place.module.scss";
 import AddIcon from "@mui/icons-material/Add";
 import IconButton from "@mui/material/IconButton";
 import AddPlaceButton from "@/components/AddPlaceButton/AddPlaceButton";
-import PlaceObjects from "../PlaceObjects/PlaceObjects";
+import PlaceObjects from "../PlaceObjects/PlaceObjects.jsx";
 
 export default function Place() {
   return (
