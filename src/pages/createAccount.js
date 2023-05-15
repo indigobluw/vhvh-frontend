@@ -14,7 +14,7 @@ import Alert from "@mui/material/Alert";
 import Checkbox from "@mui/material/Checkbox";
 import { FormControlLabel } from "@mui/material";
 
-export default function CreateAccount(props) {
+export default function CreateAccount() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [invalidPassword, setInvalidPassword] = useState(false);
@@ -94,8 +94,16 @@ export default function CreateAccount(props) {
             </Alert>
           )}
           {userCreated && (
-            <Alert severity="success">Grattis du har skapat ett konto!</Alert>
+            <div>
+              <Alert severity="success">Grattis du har skapat ett konto! Går vidare till inlogg...</Alert>
+              <p className={styles.hide}>
+                {setTimeout(() => {
+                  router.push("/login");
+                }, 4500)}
+              </p>
+            </div>
           )}
+
           <TextField
             required
             value={username}

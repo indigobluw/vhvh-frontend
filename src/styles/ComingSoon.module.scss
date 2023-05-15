@@ -1,8 +1,22 @@
-@import '/colors.scss';
+@import "/colors.scss";
 
 .container {
-margin: 0 auto;
-width: 600px;
-padding-top: 30em;
-text-align: center;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20em;
+}
+
+.hide {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-top: 10em;
+    max-width: 300px;
+    margin: 0 auto;
+  }
 }
