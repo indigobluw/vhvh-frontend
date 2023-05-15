@@ -7,6 +7,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useState } from "react";
+import jwt from "jsonwebtoken";
 
 export default function AddPlaceButton() {
   const [open, setOpen] = useState(false);
@@ -22,9 +23,10 @@ export default function AddPlaceButton() {
 
   function handleAddPlace(e) {
     e.preventDefault();
-
-    const userId = localStorage.getItem("userId");
-    const url = `http://localhost:8080/api/createplace/${userId}`;
+    const token = localStorage.getItem("token");
+    const decodedToken = jwt.decode(token);
+    const username = decodedToken ? decodedToken.sub : null;
+    const url = `http://localhost:8080/api/createplace/${username}`;
 
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
