@@ -1,5 +1,4 @@
 @import "/colors.scss";
-@import "/colors.scss";
 
 .container {
   display: flex;
@@ -49,10 +48,6 @@
   display: flex;
   justify-content: center;
   padding: 1em 1em 2em 1em;
-  background-color: $CaribbeanCurrent;
-}
-
-.logintitle {
   margin: 0.5em;
   background-color: $OrangePeel;
   border-radius: 10px 50px;

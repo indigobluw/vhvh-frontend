@@ -1,0 +1,50 @@
+@import "/colors.scss";
+
+.title {
+  display: flex;
+  padding: 1em 1em 2em 1em;
+  margin: 0.5em auto;
+  background-color: $OrangePeel;
+  border-radius: 10px 50px;
+  max-width: 14em;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.label,
+.checkbox,
+.link,
+.terms,
+.title,
+.accountType {
+  justify-content: center;
+}
+
+.textfield {
+  width: 20em;
+  margin: 1em auto;
+}
+
+.accountType {
+  display: flex;
+  width: 20em;
+  margin: 1em auto;
+}
+
+.button {
+  background-color: $Moonstone;
+  width: 20em;
+  margin: 5em auto;
+}
+
+.terms {
+  margin-top: -5.5em;
+  font-size: 11px;
+}
+
+.link {
+  margin-top: 1em;
+}

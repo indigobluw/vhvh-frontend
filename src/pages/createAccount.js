@@ -1,4 +1,4 @@
-import styles from "src/styles/Login.module.scss";
+import styles from "src/styles/CreateAccount.module.scss";
 import Navbar from "@/components/Navbar/Navbar";
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
@@ -11,10 +11,15 @@ import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import { useRouter } from "next/router";
 import Alert from "@mui/material/Alert";
+import Checkbox from "@mui/material/Checkbox";
+import { FormControlLabel } from "@mui/material";
 
 export default function CreateAccount(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [invalidPassword, setInvalidPassword] = useState(false);
+  const [passwordDuplicated, setPasswordDuplicated] = useState("");
+  const [userAlreadyExists, setUserAlreadyExists] = useState(false);
   const [userCreated, setUserCreated] = useState(false);
   const [role, setRole] = useState("USER");
   const [firstname, setFirstname] = useState("");
@@ -27,6 +32,13 @@ export default function CreateAccount(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+    if (!regex.test(password) || password !== passwordDuplicated) {
+      setInvalidPassword(true);
+      return;
+    }
 
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
@@ -47,29 +59,43 @@ export default function CreateAccount(props) {
     };
 
     fetch("http://localhost:8080/api/registeruser", requestOptions)
-      .then((response) => response.json())
-      .then(setUserCreated(true))
+      .then((response) => {
+        if (response.ok) {
+          setUserCreated(true);
+        } else if (response.status === 409) {
+          setUserAlreadyExists(true);
+        }
+        return response.json();
+      })
       .catch((error) => console.log("error", error));
   }
 
-  if (userCreated == true) {
+  /*if (userCreated == true) {
     return (
       <div>
         <Alert severity="success">Grattis du har skapat ett konto!</Alert>
         {setTimeout(() => {
           router.push("/login");
-        }, 5000)}
+        }, 3500)}
       </div>
     );
-  }
+  }*/
 
   return (
     <div>
       <title>Skapa användare | VHVH </title>
       <Navbar />
-      <div className={styles.container}>
+      <div>
         <h1 className={styles.title}>Skapa ett nytt konto</h1>
-        <form onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          {userAlreadyExists && (
+            <Alert severity="error">
+              Det finns redan ett konto med denna e-postadress
+            </Alert>
+          )}
+          {userCreated && (
+            <Alert severity="success">Grattis du har skapat ett konto!</Alert>
+          )}
           <TextField
             required
             value={username}
@@ -77,16 +103,34 @@ export default function CreateAccount(props) {
             id="outlined-basic"
             label="Användarnamn"
             type="username"
-            className={styles.username}
+            helperText="Ditt användarnamn är din mail"
+            className={styles.textfield}
           />
           <TextField
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            error={invalidPassword}
+            helperText={
+              invalidPassword
+                ? "Lösenordet måste innehålla minst 8 tecken samt en stor och liten bokstav"
+                : "Välj ett starkt lösenord med minst 8 tecken och en stor och en liten bokstav"
+            }
             id="outlined-password-input"
             label="Lösenord"
-            className={styles.password}
+            className={styles.textfield}
           />
+          <TextField
+            required
+            value={passwordDuplicated}
+            onChange={(e) => setPasswordDuplicated(e.target.value)}
+            error={invalidPassword}
+            helperText={invalidPassword ? "Löseorden matchar inte" : ""}
+            id="outlined-password-confirm-input"
+            label="Bekräfta lösenord"
+            className={styles.textfield}
+          />
+
           <br></br>
           <TextField
             required
@@ -96,7 +140,7 @@ export default function CreateAccount(props) {
             label="Förnamn"
             type="text"
             autoComplete="given-name"
-            className={styles.password}
+            className={styles.textfield}
           />
           <TextField
             required
@@ -106,10 +150,10 @@ export default function CreateAccount(props) {
             label="Efternamn"
             type="text"
             autoComplete="family-name"
-            className={styles.password}
+            className={styles.textfield}
           />
           <Box>
-            <FormControl sx={{ width: 150, marginLeft: 4 }}>
+            <FormControl className={styles.accountType}>
               <InputLabel required>Kontotyp</InputLabel>
               <Select
                 value={role}
@@ -131,12 +175,21 @@ export default function CreateAccount(props) {
               </Select>
             </FormControl>
           </Box>
+          <FormControlLabel
+            required
+            control={<Checkbox />}
+            label="Jag förstår att VHVH sparar min mailadress"
+            className={styles.checkbox}
+          />
           <Button variant="contained" type="submit" className={styles.button}>
             Skapa användare
           </Button>
         </form>
-        <p className={styles.lessmargin}>
-          {" "}
+        <p className={styles.terms}>
+          Genom att klicka på knappen "Skapa Användare" godkänner du våra&nbsp;
+          <Link href="/comingSoon">användarvillkor*</Link>
+        </p>
+        <p className={styles.link}>
           Har du redan ett konto?&nbsp; <Link href="/login">Logga in!</Link>
         </p>
       </div>
