@@ -1,7 +1,7 @@
 @import "/colors.scss";
 
 .list {
-  background-color: $OrangePeel;
+  background-color: $Isabelline;
   border-radius: 40px;
   padding: 0.5em 1em;
   margin: 0.2em;
@@ -9,8 +9,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /*text-decoration: underline;
-  text-decoration-style: double; */
 }
 
 .icons {

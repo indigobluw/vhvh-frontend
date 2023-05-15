@@ -1,6 +1,6 @@
 import styles from "src/components/Section/Section.module.scss";
 import AddSectionButton from "../AddSectionButton/AddSectionButton";
-import SectionObjects from "../SectionObject/SectionObject";
+import SectionObjects from "../SectionObjects/SectionObjects";
 
 export default function Place() {
   return (
