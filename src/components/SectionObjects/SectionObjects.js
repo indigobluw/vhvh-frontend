@@ -1,71 +1,67 @@
 import styles from "src/components/SectionObjects/SectionObjects.module.scss";
 import { useState, useEffect } from "react";
-import jwt from "jsonwebtoken";
-import EditPlaceButton from "../EditPlaceButton/EditPlaceButton";
-import DeletePlaceButton from "../DeletePlaceButton/DeletePlaceButton";
-import Section from "@/components/Section/Section";
+import EditSectionButton from "../EditSectionButton/EditSectionButton";
+import DeleteSectionButton from "../DeleteSectionButton/DeleteSectionButton";
 import IconButton from "@mui/material/IconButton";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
-export default function SectionObjects() {
-  //OBS! La till hela PlaceObject för att testa bara! OBS!
-  const [placeNames, setPlaceNames] = useState([]);
-  const [showSections, setShowSections] = useState({});
-  const token = localStorage.getItem("token");
-  const decodedToken = jwt.decode(token);
-  const username = decodedToken ? decodedToken.sub : null;
+export default function SectionObjects({ placeId }) {
+  const [sectionNames, setSectionNames] = useState([]);
+  const [sectionIds, setSectionIds] = useState([]);
+  const [showArticles, setShowArticles] = useState({});
 
-  const url = `http://localhost:8080/api/showallplaces/${username}`;
+  const url = `http://localhost:8080/api/showallsections/${placeId}`;
 
   useEffect(() => {
-    const fetchPlaceNames = async () => {
+    const fetchSectionNames = async () => {
       try {
         const fetchResponse = await fetch(url);
         const data = await fetchResponse.json();
-        const names = data.map((placeModel) => placeModel.placeName);
-        setPlaceNames(names);
-        console.log(decodedToken);
-        console.log("wohoo!");
+        const names = data.map((sectionModel) => sectionModel.sectionName);
+        const ids = data.map((sectionModel) => sectionModel.sectionId);
+        setSectionNames(names);
+        setSectionIds(ids);
+        console.log("områden wohoo!");
       } catch (error) {
         console.error("error with fetching place: ", error);
       }
     };
 
-    fetchPlaceNames();
+    fetchSectionNames();
   }, []);
 
-  const handleToggleSection = (placeName) => {
-    setShowSections((prevSections) => ({
-      ...prevSections,
-      [placeName]: !prevSections[placeName],
+  const handleToggleArticle = (sectionName) => {
+    setShowArticles((prevArticles) => ({
+      ...prevArticles,
+      [sectionName]: !prevArticles[sectionName],
     }));
   };
 
   return (
     <div>
       <ul className={styles.container}>
-        {placeNames.map((placeName, index) => (
+        {sectionNames.map((sectionName, index) => (
           <li key={index}>
             <div>
               <div className={styles.list}>
-                {placeName}
+                {sectionName}
                 <div className={styles.icons}>
                   <div>
                     <IconButton
                       variant="contained"
                       type="submit"
                       className={styles.button}
-                      onClick={() => handleToggleSection(placeName)}
+                      onClick={() => handleToggleArticle(sectionName)}
                     >
                       <KeyboardArrowDownIcon />
                     </IconButton>
                   </div>
-                  <EditPlaceButton />
-                  <DeletePlaceButton />
+                  <EditSectionButton />
+                  <DeleteSectionButton />
                 </div>
               </div>
             </div>
-            <div>{showSections[placeName] && <Section />}</div>
+            <div>{showArticles[sectionName] && <p>helloj</p>}</div>
           </li>
         ))}
       </ul>

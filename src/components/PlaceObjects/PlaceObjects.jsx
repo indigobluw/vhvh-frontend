@@ -9,6 +9,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 export default function PlaceObjects() {
   const [placeNames, setPlaceNames] = useState([]);
+  const [placeIds, setPlaceIds] = useState([]);
   const [showSections, setShowSections] = useState({});
   const token = localStorage.getItem("token");
   const decodedToken = jwt.decode(token);
@@ -21,19 +22,16 @@ export default function PlaceObjects() {
       try {
         const fetchResponse = await fetch(url);
         const data = await fetchResponse.json();
-        const names = data.map((placeModel) => placeModel.placeName);
-        setPlaceNames(names);
-        console.log(decodedToken);
-        console.log("wohoo!");
+        const name = data.map((placeModel) => placeModel.placeName);
+        const id = data.map((placeModel) => placeModel.placeId);
+        setPlaceNames(name);
+        setPlaceIds(id);
+        console.log("platser wohoo!");
       } catch (error) {
         console.error("error with fetching place: ", error);
       }
     };
-    /*if(process.browser){
-      fetch(url)
-        .then((response) => response.json())
-        .then((data) => setPlaces(data.places));
-    };*/
+
     fetchPlaceNames();
   }, []);
 
@@ -68,7 +66,9 @@ export default function PlaceObjects() {
                 </div>
               </div>
             </div>
-            <div>{showSections[placeName] && <Section />}</div>
+            <div>
+              {showSections[placeName] && <Section placeId={placeIds[index]} />}
+            </div>
           </li>
         ))}
       </ul>
