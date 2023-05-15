@@ -113,8 +113,8 @@ export default function CreateAccount(props) {
             error={invalidPassword}
             helperText={
               invalidPassword
-                ? "Lösenordet måste innehålla minst 8 tecken samt en stor och liten bokstav"
-                : "Välj ett starkt lösenord med minst 8 tecken och en stor och en liten bokstav"
+                ? "Lösenordet måste innehålla minst 8 tecken, varav minst en siffra, en stor och en liten bokstav"
+                : "Välj ett starkt lösenord med minst 8 tecken, varav minst en siffra, en stor och en liten bokstav"
             }
             id="outlined-password-input"
             label="Lösenord"
