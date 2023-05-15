@@ -33,8 +33,6 @@ export default function Login() {
       })
       .then((data) => {
         localStorage.setItem("token", data.token);
-        localStorage.setItem("userId", data.userId);
-        localStorage.setItem("username", data.username);
         localStorage.setItem("userRole", data.userRole);
         console.log(data.token);
         const token = localStorage.getItem("token");

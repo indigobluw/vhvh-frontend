@@ -1,1 +1,15 @@
 @import "/colors.scss";
+
+.list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: underline;
+  text-decoration-style: double;
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+}
