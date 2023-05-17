@@ -6,8 +6,8 @@ export default function FyraNollFyra() {
   return (
     <>
       <div className={styles.fyraNollFyra}>
-        <h1 className={styles.rubrik}>404 - Hittar inte sidan!</h1>
-        <p>Eller något annat blev fel...</p>
+        <h1>404 - Hittar inte sidan!</h1>
+        <p className={styles.subTitle}>Eller något annat blev fel...</p>
         <Link href="/">
           <Button variant="contained" className={styles.button}>
             Tillbaka hem
