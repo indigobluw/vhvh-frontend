@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <div>
-    <title> VHVH - Vad har vi hemma? </title>
+    <title>VHVH - Vad har vi hemma? </title>
       <Navbar />
       <div className={styles.container}>
         <div className={styles.index}>

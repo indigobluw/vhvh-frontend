@@ -18,6 +18,7 @@ export default function CreateAccount() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [invalidPassword, setInvalidPassword] = useState(false);
+  const [noMatchPassword, setNoMatchPassword] = useState(false);
   const [passwordDuplicated, setPasswordDuplicated] = useState("");
   const [userAlreadyExists, setUserAlreadyExists] = useState(false);
   const [userCreated, setUserCreated] = useState(false);
@@ -35,8 +36,12 @@ export default function CreateAccount() {
 
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 
-    if (!regex.test(password) || password !== passwordDuplicated) {
+    if (!regex.test(password)) {
       setInvalidPassword(true);
+      return;
+    }
+    if (password !== passwordDuplicated) {
+      setNoMatchPassword(true);
       return;
     }
 
@@ -62,7 +67,7 @@ export default function CreateAccount() {
       .then((response) => {
         if (response.ok) {
           setUserCreated(true);
-        } else if (response.status === 409) {
+        } else if (response.status === 409 || response.status === 500) {
           setUserAlreadyExists(true);
         }
         return response.json();
@@ -95,7 +100,9 @@ export default function CreateAccount() {
           )}
           {userCreated && (
             <div>
-              <Alert severity="success">Grattis du har skapat ett konto! Går vidare till inlogg...</Alert>
+              <Alert severity="success">
+                Grattis du har skapat ett konto! Går vidare till inlogg...
+              </Alert>
               <p className={styles.hide}>
                 {setTimeout(() => {
                   router.push("/login");
@@ -132,8 +139,8 @@ export default function CreateAccount() {
             required
             value={passwordDuplicated}
             onChange={(e) => setPasswordDuplicated(e.target.value)}
-            error={invalidPassword}
-            helperText={invalidPassword ? "Löseorden matchar inte" : ""}
+            error={noMatchPassword}
+            helperText={noMatchPassword ? "Löseorden matchar inte" : ""}
             id="outlined-password-confirm-input"
             label="Bekräfta lösenord"
             className={styles.textfield}
