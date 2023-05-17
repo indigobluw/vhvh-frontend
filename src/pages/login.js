@@ -65,6 +65,7 @@ export default function Login() {
 
   return (
     <div>
+    <title>Logga in | VHVH </title>
       <Navbar />
       <h1 className={styles.logintitle}>Logga in här</h1>
       <div className={styles.login}>

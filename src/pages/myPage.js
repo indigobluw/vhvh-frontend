@@ -5,6 +5,7 @@ import LogoutButton from "@/components/Logout/LogoutButton";
 export default function CreateAccount() {
   return (
     <div>
+    <title> Min sida | VHVH </title>
       <Navbar />
       <div className={styles.container}>
         <div className={styles.button}>

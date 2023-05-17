@@ -83,7 +83,7 @@ export default function CreateAccount() {
 
   return (
     <div>
-      <title>Skapa användare | VHVH </title>
+      <title>Skapa konto | VHVH </title>
       <Navbar />
       <div>
         <h1 className={styles.title}>Skapa ett nytt konto</h1>

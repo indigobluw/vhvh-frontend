@@ -7,6 +7,7 @@ export default function ComingSoon() {
 
   return (
     <div className={styles.container}>
+      <title> Under Konstruktion | VHVH</title>
       <h1>Häng kvar...</h1>
       <br></br>
       <h2>Vi arbetar för nuvarande på den här sidan</h2>
@@ -21,7 +22,8 @@ export default function ComingSoon() {
         }, 5500)}
       </p>
       <h5>
-        Blir du inte omdirigerad? <Link href="/">Klicka här för att gå tillbaka</Link>
+        Blir du inte omdirigerad?{" "}
+        <Link href="/">Klicka här för att gå tillbaka</Link>
       </h5>
     </div>
   );
