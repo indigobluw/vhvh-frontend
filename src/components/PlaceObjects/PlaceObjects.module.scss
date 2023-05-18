@@ -1,0 +1,19 @@
+@import "/colors.scss";
+
+.list {
+  background-color: $SkyBlue;
+  border-radius: 40px;
+  padding: 0.1em 1em;
+  margin: 0.2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /*text-decoration: underline;
+  text-decoration-style: double; */
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+}

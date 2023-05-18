@@ -1,6 +1,7 @@
 import styles from "src/styles/MyPage.module.scss";
 import Navbar from "@/components/Navbar/Navbar";
 import LogoutButton from "@/components/Logout/LogoutButton";
+import Place from "@/components/Place/Place";
 
 export default function CreateAccount() {
   return (
@@ -14,7 +15,9 @@ export default function CreateAccount() {
           <h2>Min sida</h2>
         </div>
         <div className={styles.resten}>
-          <div className={styles.places}>Mina platser etc...</div>
+          <div className={styles.places}>
+            <Place />
+          </div>
           <div className={styles.myData}>Mina användaruppgifter</div>
         </div>
       </div>
