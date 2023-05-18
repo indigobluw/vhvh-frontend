@@ -16,6 +16,7 @@ import { FormControlLabel } from "@mui/material";
 
 export default function CreateAccount() {
   const [username, setUsername] = useState("");
+  const [invalidUsername, setInvalidUsername] = useState(false);
   const [password, setPassword] = useState("");
   const [invalidPassword, setInvalidPassword] = useState(false);
   const [noMatchPassword, setNoMatchPassword] = useState(false);
@@ -34,14 +35,19 @@ export default function CreateAccount() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+    const usernameRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!regex.test(password)) {
+    if (!passwordRegex.test(password)) {
       setInvalidPassword(true);
       return;
     }
     if (password !== passwordDuplicated) {
       setNoMatchPassword(true);
+      return;
+    }
+    if (!usernameRegex.test(username)) {
+      setInvalidUsername(true);
       return;
     }
 
@@ -91,7 +97,9 @@ export default function CreateAccount() {
       <title>Skapa konto | VHVH </title>
       <Navbar />
       <div>
-        <h1 className={styles.title}>Skapa ett nytt konto</h1>
+        <p className={styles.title}>
+          <b>Skapa ett konto</b>
+        </p>
         <form className={styles.form} onSubmit={handleSubmit}>
           {userAlreadyExists && (
             <Alert severity="error">
@@ -101,7 +109,7 @@ export default function CreateAccount() {
           {userCreated && (
             <div>
               <Alert severity="success">
-                Grattis du har skapat ett konto! Går vidare till inlogg...
+                Konto är skapat! Går vidare till inlogg...
               </Alert>
               <p className={styles.hide}>
                 {setTimeout(() => {
@@ -118,7 +126,12 @@ export default function CreateAccount() {
             id="outlined-basic"
             label="Användarnamn"
             type="username"
-            helperText="Ditt användarnamn är din mail"
+            error={invalidUsername}
+            helperText={
+              invalidUsername
+                ? "Ange en mailadress"
+                : "Användarnamnet är din mailadress"
+            }
             className={styles.textfield}
           />
           <TextField
@@ -133,7 +146,7 @@ export default function CreateAccount() {
             }
             id="outlined-password-input"
             label="Lösenord"
-            className={styles.textfield}
+            className={styles.textfield1}
           />
           <TextField
             required
@@ -145,8 +158,6 @@ export default function CreateAccount() {
             label="Bekräfta lösenord"
             className={styles.textfield}
           />
-
-          <br></br>
           <TextField
             required
             value={firstname}
@@ -190,20 +201,26 @@ export default function CreateAccount() {
               </Select>
             </FormControl>
           </Box>
-          <FormControlLabel
-            required
-            control={<Checkbox />}
-            label="Jag förstår att VHVH sparar min mailadress"
-            className={styles.checkbox}
-          />
+          <div className={styles.checkbox}>
+            <FormControlLabel
+              required
+              control={<Checkbox />}
+              className={styles.checkbox}
+            />
+            <p className={styles.checkboxText}>
+              Jag förstår att VHVH sparar min mailadress
+            </p>
+          </div>
           <Button variant="contained" type="submit" className={styles.button}>
             Skapa användare
           </Button>
         </form>
-        <p className={styles.terms}>
-          Genom att klicka på knappen "Skapa Användare" godkänner du våra&nbsp;
-          <Link href="/comingSoon">användarvillkor*</Link>
-        </p>
+        <Link href="/comingSoon">
+          <p className={styles.terms}>
+            Genom att klicka på knappen "Skapa Användare" godkänner du våra
+            användarvillkor*
+          </p>
+        </Link>
         <p className={styles.link}>
           Har du redan ett konto?&nbsp; <Link href="/login">Logga in!</Link>
         </p>

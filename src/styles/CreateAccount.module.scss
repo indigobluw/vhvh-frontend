@@ -6,7 +6,8 @@
   margin: 0.5em auto;
   background-color: $OrangePeel;
   border-radius: 10px 50px;
-  max-width: 14em;
+  width: 14em;
+  font-size: 30px;
 }
 
 .form {
@@ -26,6 +27,13 @@
 .textfield {
   width: 20em;
   margin: 1em auto;
+  height: 3.5em;
+}
+
+.textfield1 {
+  width: 20em;
+  margin: 1em auto;
+  height: 5.5em;
 }
 
 .accountType {
@@ -43,12 +51,47 @@
 .terms {
   margin-top: -5.5em;
   font-size: 11px;
+  text-align: center;
+  color: $Linkblue;
+  text-decoration: underline;
 }
 
 .link {
   margin-top: 1em;
+  color: $Gray;
+}
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .hide {
   display: none;
+}
+
+@media (max-width: 480px) {
+  .title {
+    width: 12em;
+    font-size: 25px;
+  }
+
+  .terms {
+    font-size: 10px;
+  }
+
+  .checkboxText {
+    font-size: 12px;
+  }
+
+  .textfield1{
+    height: 5.5em
+  }
+
+  .textfield,
+  .textfield1,
+  .accountType {
+    width: 300px;
+  }
 }
