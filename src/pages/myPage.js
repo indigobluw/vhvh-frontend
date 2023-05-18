@@ -6,6 +6,7 @@ import Place from "@/components/Place/Place";
 export default function CreateAccount() {
   return (
     <div>
+    <title> Min sida | VHVH </title>
       <Navbar />
       <div className={styles.container}>
         <div className={styles.button}>

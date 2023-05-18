@@ -1,15 +1,20 @@
 import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer/Footer";
 import styles from "src/styles/Login.module.scss";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import Link from "next/link";
+import Alert from "@mui/material";
+import { useEffect } from "react";
 
 export default function Login() {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState(false);
+  const [isEmpty, setIsEmpty] = useState(false);
+
   function sendLoginRequest() {
     const requestBody = {
       username: username,
@@ -19,16 +24,16 @@ export default function Login() {
       headers: {
         "Content-Type": "application/json",
       },
-      method: "post",
+      method: "POST",
       body: JSON.stringify(requestBody),
     })
       .then((response) => {
         if (response.status === 200) {
           console.log("Du är inloggad!");
           return response.json();
-        } else {
+        } else if (response.status === 500 || response.status === 401) {
           console.log("Oj! Något gick fel!");
-          throw new Error("Failed to log in");
+          setLoginError(true);
         }
       })
       .then((data) => {
@@ -47,8 +52,7 @@ export default function Login() {
             console.log("Success");
             if (localStorage.getItem("userRole") == "ADMIN") {
               router.push("/admin");
-            }
-            else {
+            } else {
               router.push("/myPage");
             }
           } else {
@@ -61,20 +65,36 @@ export default function Login() {
       });
   }
 
+  useEffect(() => {
+    setIsEmpty(username === "" || password === "");
+  }, [username, password]);
+
   return (
     <div>
+      <title>Logga in | VHVH </title>
       <Navbar />
-      <h1 className={styles.logintitle}>Logga in här</h1>
+      <p className={styles.logintitle}>
+        <b>Logga in</b>
+      </p>
       <div className={styles.login}>
+        {loginError && (
+          <Alert severity="error">
+            Det finns inget konto med den mail adressen eller så är lösenordet
+            fel
+          </Alert>
+        )}
         <TextField
+          sx={{ width: 250 }}
           value={username}
           onChange={(event) => setUsername(event.target.value)}
           id="outlined-basic"
           label="Användarnamn"
           type="username"
+          helperText="Användarnamnet är din mail-adress"
           className={styles.username}
         />
         <TextField
+          sx={{ width: 250 }}
           value={password}
           onChange={(event) => setPassword(event.target.value)}
           id="outlined-password-input"
@@ -83,16 +103,32 @@ export default function Login() {
           autoComplete="current-password"
           className={styles.password}
         />
-        <Button
-          variant="contained"
-          type="submit"
-          className={styles.button}
-          onClick={() => sendLoginRequest()}
-        >
-          Logga in
-        </Button>
+        <p className={styles.forgotPassword}>
+          Har du glömt ditt lösenord?&nbsp;{" "}
+          <Link href="/comingSoon">Klicka här!</Link>
+        </p>
+        {isEmpty ? (
+          <Button
+            sx={{ width: 150 }}
+            variant="contained"
+            type="submit"
+            className={styles.button}
+            disabled
+          >
+            Logga in
+          </Button>
+        ) : (
+          <Button
+            sx={{ width: 150 }}
+            variant="contained"
+            type="submit"
+            className={styles.button}
+            onClick={() => sendLoginRequest()}
+          >
+            Logga in
+          </Button>
+        )}
       </div>
-      <Footer />
     </div>
   );
 }

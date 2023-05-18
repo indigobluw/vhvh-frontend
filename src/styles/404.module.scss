@@ -5,15 +5,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: red;
+  text-align: center;
+  max-width: 300px;
+  margin: 2em auto;
+  color: $Warning;
+  padding-top: 10em;
 }
 
-.rubrik {
-  margin: 2em;
+.subTitle {
+  padding-top: 1.5em;
 }
+
 
 .button {
-  background-color: $OrangePeel;
-  color: $Black;
+  background-color: $Moonstone;
+  color: $White;
   margin: 2em;
 }
