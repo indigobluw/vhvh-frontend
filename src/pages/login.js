@@ -6,12 +6,14 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Link from "next/link";
 import Alert from "@mui/material";
+import { useEffect } from "react";
 
 export default function Login() {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState(false);
+  const [isEmpty, setIsEmpty] = useState(false);
 
   function sendLoginRequest() {
     const requestBody = {
@@ -26,10 +28,10 @@ export default function Login() {
       body: JSON.stringify(requestBody),
     })
       .then((response) => {
-        if (response.status === 200 ) {
+        if (response.status === 200) {
           console.log("Du är inloggad!");
           return response.json();
-        } else if (response.status === 500) {
+        } else if (response.status === 500 || response.status === 401) {
           console.log("Oj! Något gick fel!");
           setLoginError(true);
         }
@@ -64,6 +66,10 @@ export default function Login() {
         console.error(error);
       });
   }
+
+  useEffect(() => {
+    setIsEmpty(username === "" || password === "");
+  }, [username, password]);
 
   return (
     <div>
@@ -103,15 +109,27 @@ export default function Login() {
           Har du glömt ditt lösenord?&nbsp;{" "}
           <Link href="/comingSoon">Klicka här!</Link>
         </p>
-        <Button
-          sx={{ width: 150 }}
-          variant="contained"
-          type="submit"
-          className={styles.button}
-          onClick={() => sendLoginRequest()}
-        >
-          Logga in
-        </Button>
+        {isEmpty ? (
+          <Button
+            sx={{ width: 150 }}
+            variant="contained"
+            type="submit"
+            className={styles.button}
+            disabled
+          >
+            Logga in
+          </Button>
+        ) : (
+          <Button
+            sx={{ width: 150 }}
+            variant="contained"
+            type="submit"
+            className={styles.button}
+            onClick={() => sendLoginRequest()}
+          >
+            Logga in
+          </Button>
+        )}
       </div>
     </div>
   );
