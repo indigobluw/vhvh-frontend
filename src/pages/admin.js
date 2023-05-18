@@ -1,6 +1,7 @@
 import styles from "src/styles/MyPage.module.scss";
 import Navbar from "@/components/Navbar/Navbar";
 import LogoutButton from "@/components/Logout/LogoutButton";
+import User from "@/components/User/User";
 
 export default function Admin() {
   return (
@@ -15,7 +16,10 @@ export default function Admin() {
           <h2>Admin sida</h2>
         </div>
         <div className={styles.resten}>
-          <div className={styles.places}>Våra användare</div>
+          <div className={styles.places}>Våra användare
+          
+          
+          </div>
           <div className={styles.myData}>Ta bort användare</div>
         </div>
       </div>
