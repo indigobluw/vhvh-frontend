@@ -1,28 +1,31 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import jwt from "jsonwebtoken";
 
-const withAuth = (WrappedComponent) => {
-  const token =
-    typeof localStorage !== "undefined" ? localStorage.getItem("token") : null;
-  const decodedToken = jwt.decode(token);
-  const role = decodedToken ? decodedToken.role : null;
+const withAuth = (WrappedComponent, allowedRoles = []) => {
   return (props) => {
     const router = useRouter();
+    const token =
+      typeof localStorage !== "undefined"
+        ? localStorage.getItem("token")
+        : null;
+    const decodedToken = token ? jwt.decode(token) : null;
+    const role = decodedToken ? decodedToken.role : null;
+    const isAuthenticated = !!role;
 
-    // Perform authentication checks
     useEffect(() => {
-      // Implement your authentication logic here
-      // For example, check if the user has a valid token
-      const isAuthenticated = checkIfUserIsAuthenticated();
-
       if (!isAuthenticated) {
-        // Redirect to the login page or unauthorized page
         router.push("/login");
+      } else if (!allowedRoles.includes(role)) {
+        router.push("/");
       }
-    }, []);
+    }, [isAuthenticated, allowedRoles, role]);
 
-    // Render the protected page if authenticated
-    return isAuthenticated ? <WrappedComponent {...props} /> : null;
+    if (!isAuthenticated || !allowedRoles.includes(role)) {
+      return null;
+    }
+
+    return <WrappedComponent {...props} />;
   };
 };
 

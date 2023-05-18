@@ -2,9 +2,9 @@ import styles from "src/styles/MyPage.module.scss";
 import Navbar from "@/components/Navbar/Navbar";
 import LogoutButton from "@/components/Logout/LogoutButton";
 import Place from "@/components/Place/Place";
-import jwt from "jsonwebtoken";
+import withAuth from "@/components/auth";
 
-export default function MyPage() {
+const MyPage = () => {
 
   
 
@@ -28,4 +28,6 @@ export default function MyPage() {
       </div>
     </div>
   );
-}
+};
+
+export default withAuth(MyPage, ["USER"]);

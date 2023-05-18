@@ -1,8 +1,9 @@
 import styles from "src/styles/MyPage.module.scss";
 import Navbar from "@/components/Navbar/Navbar";
 import LogoutButton from "@/components/Logout/LogoutButton";
+import withAuth from "@/components/auth";
 
-export default function Admin() {
+const Admin = () => {
   return (
     <div>
       <title> Admin | VHVH </title>
@@ -21,4 +22,6 @@ export default function Admin() {
       </div>
     </div>
   );
-}
+};
+
+export default withAuth(Admin, ["ADMIN"]);

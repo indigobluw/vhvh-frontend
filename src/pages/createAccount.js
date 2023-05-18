@@ -162,7 +162,6 @@ export default function CreateAccount() {
             required
             value={firstname}
             onChange={(e) => setFirstname(e.target.value)}
-            id="outlined-basic"
             label="Förnamn"
             type="text"
             autoComplete="given-name"
@@ -172,7 +171,6 @@ export default function CreateAccount() {
             required
             value={lastname}
             onChange={(e) => setLastname(e.target.value)}
-            id="outlined-basic"
             label="Efternamn"
             type="text"
             autoComplete="family-name"
