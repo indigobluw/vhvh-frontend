@@ -67,6 +67,9 @@ export default function Navbar() {
             <Link href="/comingSoon">
               <li className={styles.menuItem}>Om oss</li>
             </Link>
+            <Link href="/admin">
+              <li className={styles.menuItem}>Admin</li>
+            </Link>
           </ul>
         </div>
       </AppBar>

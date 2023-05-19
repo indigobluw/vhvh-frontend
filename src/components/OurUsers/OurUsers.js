@@ -8,15 +8,30 @@ import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import TableHead from "@mui/material/TableHead";
 
-export default function OurUsers() {
+export default function OurUsers({ sorting }) {
   const [user, setUser] = useState([]);
 
   const url = `http://localhost:8080/api/showusers`;
+  const url2 = `http://localhost:8080/api/showusersbyrole`;
+  const url3 = `http://localhost:8080/api/showusersbyfirstname`;
+  const url4 = `http://localhost:8080/api/showusersbylastname`;
+
+  const getURL = () => {
+    if (sorting === "default") {
+      return url;
+    } else if (sorting === "accountType") {
+      return url2;
+    } else if (sorting === "firstname") {
+      return url3;
+    } else if (sorting === "lastname") {
+      return url4;
+    }
+  };
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const fetchResponse = await fetch(url);
+        const fetchResponse = await fetch(getURL());
         const data = await fetchResponse.json();
         setUser(data);
         console.log("användare wohoo!");
@@ -26,7 +41,7 @@ export default function OurUsers() {
     };
 
     fetchUsers();
-  }, []);
+  }, [sorting]);
 
   return (
     <div>
@@ -37,7 +52,7 @@ export default function OurUsers() {
               <TableCell>Användarnamn</TableCell>
               <TableCell>Förnamn</TableCell>
               <TableCell>Efternamn</TableCell>
-              <TableCell>Roll</TableCell>
+              <TableCell>Kontotyp</TableCell>
               <TableCell>Ta bort</TableCell>
             </TableRow>
           </TableHead>

@@ -37,6 +37,9 @@
 }
 
 .usersheading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   padding: 1.5em;
   background-color: $Isabelline;
   border-radius: 40px;
