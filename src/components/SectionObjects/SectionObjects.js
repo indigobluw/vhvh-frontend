@@ -4,6 +4,7 @@ import EditSectionButton from "../EditSectionButton/EditSectionButton";
 import DeleteSectionButton from "../DeleteSectionButton/DeleteSectionButton";
 import IconButton from "@mui/material/IconButton";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import Article from "../Article/Article";
 
 export default function SectionObjects({ placeId }) {
   const [sectionNames, setSectionNames] = useState([]);
@@ -61,7 +62,11 @@ export default function SectionObjects({ placeId }) {
                 </div>
               </div>
             </div>
-            <div>{showArticles[sectionName] && <p>helloj</p>}</div>
+            <div>
+              {showArticles[sectionName] && (
+                <Article sectionId={sectionIds[index]} />
+              )}
+            </div>
           </li>
         ))}
       </ul>
