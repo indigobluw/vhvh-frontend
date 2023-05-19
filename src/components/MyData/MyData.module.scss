@@ -1,0 +1,14 @@
+@import "/colors.scss";
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $Isabelline;
+  padding: 1em;
+  border-radius: 40px;
+}
+
+.changebutton {
+  padding: 0.4em;
+}

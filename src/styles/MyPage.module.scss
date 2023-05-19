@@ -24,13 +24,14 @@
 }
 
 .places,
-.myData {
-  margin: 0.5em;
+.myData,
+.welcome {
+  margin: 1em 0.5em 0.5em 0.5em;
   padding: 1.5em;
   border: 1px solid $Black;
   border-radius: 40px;
 }
 
-.myData {
-  background-color: $Isabelline;
+.welcome {
+  text-align: center;
 }
