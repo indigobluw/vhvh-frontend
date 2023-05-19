@@ -39,6 +39,9 @@ export default function Navbar() {
           <Link href="/comingSoon">
             <li className={styles.li}>Om oss</li>
           </Link>
+          <Link href="/admin">
+            <li className={styles.li}>Admin</li>
+          </Link>
           <li className={styles.burger}>
             {phoneMenuOpen ? (
               <CloseIcon fontSize="large" onClick={openMenu} />
