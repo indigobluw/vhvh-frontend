@@ -11,7 +11,9 @@ export default function Article({ sectionId }) {
           <AddArticleButton sectionId={sectionId} />
         </div>
       </div>
-      <div>{/* <ArticleObjects sectionId={sectionId} />*/}</div>
+      <div>
+        <ArticleObjects sectionId={sectionId} />
+      </div>
     </div>
   );
 }

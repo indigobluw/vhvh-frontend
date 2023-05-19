@@ -3,7 +3,6 @@ import ChangeMyDataButton from "../ChangeMyDataButton/ChangeMyDataButton.js";
 import { useState, useEffect } from "react";
 import EditSectionButton from "../EditSectionButton/EditSectionButton";
 import DeleteSectionButton from "../DeleteSectionButton/DeleteSectionButton";
-import IconButton from "@mui/material/IconButton";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -12,10 +11,7 @@ import TableRow from "@mui/material/TableRow";
 import TableHead from "@mui/material/TableHead";
 
 export default function ArticleObjects({ sectionId }) {
-  const [articleName, setArticleName] = useState([]);
-  const [articleAmount, setArticleAmount] = useState([]);
-  const [typeOfAmount, setTypeOfAmount] = useState([]);
-  const [bestBefore, setBestBefore] = useState([]);
+  const [article, setArticle] = useState([]);
 
   const url = `http://localhost:8080/api/viewAllArticles/${sectionId}`;
 
@@ -24,21 +20,7 @@ export default function ArticleObjects({ sectionId }) {
       try {
         const fetchResponse = await fetch(url);
         const data = await fetchResponse.json();
-        const articleName = data.map(
-          (articleModel) => articleModel.articleName
-        );
-        const articleAmount = data.map(
-          (articleModel) => articleModel.articleAmount
-        );
-        const typeOfAmount = data.map(
-          (articleModel) => articleModel.typeOfAmount
-        );
-        const bestBefore = data.map((articleModel) => articleModel.bestBefore);
-        setArticleName(articleName);
-        setArticleAmount(articleAmount);
-        setTypeOfAmount(typeOfAmount);
-        setBestBefore(bestBefore);
-
+        setArticle(data);
         console.log("artikel wohoo!");
       } catch (error) {
         console.error("error with fetching artikel: ", error);
@@ -58,10 +40,25 @@ export default function ArticleObjects({ sectionId }) {
               <TableCell>Mängd</TableCell>
               <TableCell>Typ</TableCell>
               <TableCell>Bäst före</TableCell>
+              <TableCell>Ändra</TableCell>
+              <TableCell>Ta bort</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            
+            {article.map((articleModel, index) => (
+              <TableRow key={index}>
+                <TableCell>{articleModel.articleName}</TableCell>
+                <TableCell>{articleModel.articleAmount}</TableCell>
+                <TableCell>{articleModel.typeOfAmount}</TableCell>
+                <TableCell>{articleModel.bestBefore}</TableCell>
+                <TableCell>
+                  <EditSectionButton />{" "}
+                </TableCell>
+                <TableCell>
+                  <DeleteSectionButton />
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
