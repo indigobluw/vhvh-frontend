@@ -111,11 +111,11 @@ export default function CreateAccount() {
               <Alert severity="success">
                 Konto är skapat! Går vidare till inlogg...
               </Alert>
-              <p className={styles.hide}>
+              <div className={styles.hide}>
                 {setTimeout(() => {
                   router.push("/login");
                 }, 4500)}
-              </p>
+              </div>
             </div>
           )}
 

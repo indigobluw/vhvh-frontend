@@ -16,11 +16,11 @@ export default function ComingSoon() {
       <br></br>
       <br></br>
       <h3>Går tillbaka till startsidan...</h3>
-      <p className={styles.hide}>
+      <div className={styles.hide}>
         {setTimeout(() => {
           router.push("/");
         }, 5500)}
-      </p>
+      </div>
       <h5>
         Blir du inte omdirigerad?{" "}
         <Link href="/">Klicka här för att gå tillbaka</Link>
