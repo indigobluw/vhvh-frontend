@@ -217,8 +217,8 @@ export default function CreateAccount() {
         </form>
         <Link href="/comingSoon">
           <p className={styles.terms}>
-            Genom att klicka på knappen "Skapa Användare" godkänner du våra
-            användarvillkor*
+            Genom att klicka på knappen&nbsp;<q>Skapa Användare</q>
+            &nbsp;godkänner du våra användarvillkor*
           </p>
         </Link>
         <p className={styles.link}>
