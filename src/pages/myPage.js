@@ -5,8 +5,9 @@ import Place from "@/components/Place/Place";
 import MyData from "@/components/MyData/MyData";
 import Welcome from "@/components/Welcome/Welcome";
 import jwt from "jsonwebtoken";
+import withAuth from "@/components/auth.js";
 
-export default function MyPage() {
+function MyPage() {
   return (
     <div>
       <title> Min sida | VHVH </title>
@@ -33,3 +34,4 @@ export default function MyPage() {
     </div>
   );
 }
+export default withAuth(MyPage);

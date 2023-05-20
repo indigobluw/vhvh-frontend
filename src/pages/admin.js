@@ -4,8 +4,9 @@ import LogoutButton from "@/components/Logout/LogoutButton";
 import OurUsers from "@/components/OurUsers/OurUsers";
 import { useState } from "react";
 import SortingUsers from "@/components/SortingUsers/SortingUsers";
+import withAuth from "@/components/auth.js"
 
-export default function Admin() {
+function Admin() {
   const [sorting, setSorting] = useState("default");
 
   const handleChangeSorting = (event) => {
@@ -37,3 +38,4 @@ export default function Admin() {
     </div>
   );
 }
+export default withAuth(Admin);
