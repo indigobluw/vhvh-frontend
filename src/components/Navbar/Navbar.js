@@ -36,9 +36,11 @@ export default function Navbar() {
           <Link href="/">
             <li className={styles.li}>Startsida</li>
           </Link>
-          <Link href="/comingSoon">
-            <li className={styles.li}>Kontakt</li>
-          </Link>
+          <li>
+            <a className={styles.li} href="mailto:vhvh.examen@gmail.com">
+              Kontakta oss
+            </a>
+          </li>
           <Link href="/comingSoon">
             <li className={styles.li}>Om oss</li>
           </Link>
@@ -72,9 +74,14 @@ export default function Navbar() {
             <Link href="/">
               <li className={styles.menuItem}>Startsida</li>
             </Link>
-            <Link href="/comingSoon">
-              <li className={styles.menuItem}>Kontakt</li>
-            </Link>
+            <li>
+              <a
+                className={styles.menuItem}
+                href="mailto:vhvh.examen@gmail.com"
+              >
+                Kontakta oss
+              </a>
+            </li>
             <Link href="/comingSoon">
               <li className={styles.menuItem}>Om oss</li>
             </Link>
