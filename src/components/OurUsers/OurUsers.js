@@ -1,6 +1,6 @@
 import styles from "src/components/OurUsers/OurUsers.module.scss";
 import { useState, useEffect } from "react";
-import DeleteSectionButton from "../DeleteSectionButton/DeleteSectionButton";
+import DeleteSectionButton from "@/components/DeleteSectionButton/DeleteSectionButton";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";

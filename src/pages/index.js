@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <div>
-    <title>VHVH - Vad har vi hemma? </title>
+      <title>VHVH - Vad har vi hemma? </title>
       <Navbar />
       <div className={styles.container}>
         <div className={styles.index}>
@@ -20,17 +20,44 @@ export default function Home() {
           </div>
           <div className={styles.buttons}>
             <Link href="/login">
-              <Button variant="contained" className={styles.button}>
+              <Button
+                sx={{
+                  backgroundColor: "#489fb5",
+                  padding: 1,
+                  width: 224,
+                  margin: 1,
+                }}
+                variant="contained"
+                className={styles.button}
+              >
                 Logga in
               </Button>
             </Link>
             <Link href="/myPage">
-              <Button variant="contained" className={styles.button}>
+              <Button
+                sx={{
+                  backgroundColor: "#489fb5",
+                  padding: 1,
+                  width: 224,
+                  margin: 1,
+                }}
+                variant="contained"
+                className={styles.button}
+              >
                 Min sida
               </Button>
             </Link>
             <Link href="/createAccount">
-              <Button variant="contained" className={styles.button}>
+              <Button
+                sx={{
+                  backgroundColor: "#489fb5",
+                  padding: 1,
+                  width: 224,
+                  margin: 1,
+                }}
+                variant="contained"
+                className={styles.button}
+              >
                 Skapa konto
               </Button>
             </Link>

@@ -1,9 +1,18 @@
 import styles from "src/styles/ComingSoon.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function ComingSoon() {
   const router = useRouter();
+
+  useEffect(() => {
+    const redirect = setTimeout(() => {
+      router.push("/");
+    }, 5500);
+
+    return () => clearTimeout(redirect);
+  }, [router]);
 
   return (
     <div className={styles.container}>
@@ -16,11 +25,6 @@ export default function ComingSoon() {
       <br></br>
       <br></br>
       <h3>Går tillbaka till startsidan...</h3>
-      <div className={styles.hide}>
-        {setTimeout(() => {
-          router.push("/");
-        }, 5500)}
-      </div>
       <h5>
         Blir du inte omdirigerad?{" "}
         <Link href="/">Klicka här för att gå tillbaka</Link>

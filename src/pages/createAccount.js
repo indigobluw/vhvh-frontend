@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import Alert from "@mui/material/Alert";
 import Checkbox from "@mui/material/Checkbox";
 import { FormControlLabel } from "@mui/material";
+import { useEffect } from "react";
 
 export default function CreateAccount() {
   const [username, setUsername] = useState("");
@@ -81,16 +82,15 @@ export default function CreateAccount() {
       .catch((error) => console.log("error", error));
   }
 
-  /*if (userCreated == true) {
-    return (
-      <div>
-        <Alert severity="success">Grattis du har skapat ett konto!</Alert>
-        {setTimeout(() => {
-          router.push("/login");
-        }, 3500)}
-      </div>
-    );
-  }*/
+  useEffect(() => {
+    if (userCreated) {
+      const redirectTimeout = setTimeout(() => {
+        router.push("/login");
+      }, 4500);
+
+      return () => clearTimeout(redirectTimeout);
+    }
+  }, [userCreated, router]);
 
   return (
     <div>
@@ -111,11 +111,6 @@ export default function CreateAccount() {
               <Alert severity="success">
                 Konto är skapat! Går vidare till inlogg...
               </Alert>
-              <div className={styles.hide}>
-                {setTimeout(() => {
-                  router.push("/login");
-                }, 4500)}
-              </div>
             </div>
           )}
 

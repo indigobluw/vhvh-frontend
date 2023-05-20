@@ -28,7 +28,7 @@ export default function Navbar() {
 
   return (
     <div>
-      <AppBar className={styles.navbar}>
+      <AppBar sx={{ backgroundColor: "#489fb5", position: "relative", zIndex: 1 }} className={styles.navbar}>
         <ul className={styles.ul}>
           <Link href="/">
             <li className={styles.li}>Startsida</li>

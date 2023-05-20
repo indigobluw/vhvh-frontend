@@ -5,8 +5,9 @@ import { useRouter } from "next/router";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Link from "next/link";
-import { Alert } from "@mui/material/Alert";
+import Alert from "@mui/material/Alert";
 import { useEffect } from "react";
+import * as React from "react";
 
 export default function Login() {
   const router = useRouter();
