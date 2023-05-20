@@ -56,6 +56,7 @@ export default function AddSectionButton({ placeId }) {
   return (
     <div>
       <Button
+        sx={{ fontWeight: "bold", backgroundColor: "#16697a", color:"#ffffff" }}
         variant="contained"
         type="submit"
         className={styles.button}
@@ -67,8 +68,9 @@ export default function AddSectionButton({ placeId }) {
         <DialogTitle>Skapa område</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Lägg till ett valfritt område, t.ex. "Kylskåpet", "Städskåpet" eller
-            "Kryddhyllan"
+            Lägg till ett valfritt område,
+            t.ex.&nbsp;&quot;Kylskåpet&quot;,&nbsp;&quot;Städskåpet&quot; eller
+            &quot;Kryddhyllan&quot;
           </DialogContentText>
           <TextField
             onChange={(e) => setSectionName(e.target.value)}

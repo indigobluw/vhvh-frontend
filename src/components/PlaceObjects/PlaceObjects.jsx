@@ -34,7 +34,7 @@ export default function PlaceObjects() {
     };
 
     fetchPlaceNames();
-  }, []);
+  }, [url]);
 
   const handleToggleSection = (placeName) => {
     setShowSections((prevSections) => ({
@@ -45,7 +45,7 @@ export default function PlaceObjects() {
 
   return (
     <div>
-      <ul className={styles.container}>
+      <ul>
         {placeNames.map((placeName, index) => (
           <li key={index}>
             <div>
@@ -56,10 +56,9 @@ export default function PlaceObjects() {
                     <IconButton
                       variant="contained"
                       type="submit"
-                      className={styles.button}
                       onClick={() => handleToggleSection(placeName)}
                     >
-                      <KeyboardArrowDownIcon />
+                      <KeyboardArrowDownIcon sx={{ color: "#ede7e3" }} />
                     </IconButton>
                   </div>
                   <EditPlaceButton />

@@ -60,6 +60,11 @@ export default function AddPlaceButton() {
   return (
     <div>
       <Button
+        sx={{
+          fontWeight: "bold",
+          backgroundColor: "#489fb5",
+          color: "#ffffff"
+        }}
         variant="contained"
         type="submit"
         className={styles.button}
@@ -71,8 +76,8 @@ export default function AddPlaceButton() {
         <DialogTitle>Skapa plats</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Lägg till en valfri plats, t.ex. "Hemma", "Landstället" eller
-            "Adressvägen 1"
+            Lägg till en valfri plats, t.ex. &quot;Hemma&quot;,
+            &quot;Landstället&quot; eller &quot;Adressvägen 1&quot;
           </DialogContentText>
           <TextField
             onChange={(e) => setPlaceName(e.target.value)}

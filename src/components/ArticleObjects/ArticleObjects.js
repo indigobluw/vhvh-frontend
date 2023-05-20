@@ -28,7 +28,7 @@ export default function ArticleObjects({ sectionId }) {
     };
 
     fetchArticles();
-  }, []);
+  }, [url]);
 
   return (
     <div>

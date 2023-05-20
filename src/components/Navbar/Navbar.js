@@ -28,7 +28,10 @@ export default function Navbar() {
 
   return (
     <div>
-      <AppBar className={styles.navbar}>
+      <AppBar
+        sx={{ backgroundColor: "#489fb5", position: "relative", zIndex: 1 }}
+        className={styles.navbar}
+      >
         <ul className={styles.ul}>
           <Link href="/">
             <li className={styles.li}>Startsida</li>
@@ -44,9 +47,17 @@ export default function Navbar() {
           </Link>
           <li className={styles.burger}>
             {phoneMenuOpen ? (
-              <CloseIcon fontSize="large" onClick={openMenu} />
+              <CloseIcon
+                sx={{ color: "#ede7e3" }}
+                fontSize="large"
+                onClick={openMenu}
+              />
             ) : (
-              <MenuIcon fontSize="large" onClick={openMenu} />
+              <MenuIcon
+                sx={{ color: "#ede7e3" }}
+                fontSize="large"
+                onClick={openMenu}
+              />
             )}
           </li>
         </ul>

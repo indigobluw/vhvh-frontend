@@ -29,7 +29,7 @@ export default function SectionObjects({ placeId }) {
     };
 
     fetchSectionNames();
-  }, []);
+  }, [url]);
 
   const handleToggleArticle = (sectionName) => {
     setShowArticles((prevArticles) => ({
@@ -54,7 +54,7 @@ export default function SectionObjects({ placeId }) {
                       className={styles.button}
                       onClick={() => handleToggleArticle(sectionName)}
                     >
-                      <KeyboardArrowDownIcon />
+                      <KeyboardArrowDownIcon sx={{ color: "#ede7e3" }} />
                     </IconButton>
                   </div>
                   <EditSectionButton />

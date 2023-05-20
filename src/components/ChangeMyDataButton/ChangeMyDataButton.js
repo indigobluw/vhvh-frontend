@@ -95,6 +95,7 @@ export default function ChangeMyDataButton() {
   return (
     <div>
       <Button
+        sx={{ fontWeight: "bold", backgroundColor: "#ffa62b", color: "#ffffff" }}
         variant="contained"
         type="submit"
         className={styles.button}

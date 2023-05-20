@@ -5,8 +5,9 @@ import { useRouter } from "next/router";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Link from "next/link";
-import Alert from "@mui/material";
+import Alert from "@mui/material/Alert";
 import { useEffect } from "react";
+import * as React from "react";
 
 export default function Login() {
   const router = useRouter();
@@ -109,7 +110,7 @@ export default function Login() {
         </p>
         {isEmpty ? (
           <Button
-            sx={{ width: 150 }}
+            sx={{ width: 150, backgroundColor: "#489fb5" }}
             variant="contained"
             type="submit"
             className={styles.button}
@@ -119,7 +120,7 @@ export default function Login() {
           </Button>
         ) : (
           <Button
-            sx={{ width: 150 }}
+            sx={{ width: 150, backgroundColor: "#489fb5" }}
             variant="contained"
             type="submit"
             className={styles.button}
