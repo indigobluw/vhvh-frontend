@@ -73,9 +73,8 @@ export default function AddArticleButton({ sectionId }) {
         <DialogTitle>Lägg artkiel</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Lägg till ett namn på din artikel, t.ex.&nbsp;<q>Ost</q>
-            &nbsp;eller&nbsp;
-            <q>Toapapper</q>
+            Lägg till ett namn på din artikel,
+            t.ex.&nbsp;&quot;Ost&quot;&nbsp;eller&nbsp;&quot;Toapappaer&quot;
           </DialogContentText>
           <TextField
             onChange={(e) => setArticleName(e.target.value)}
@@ -87,8 +86,8 @@ export default function AddArticleButton({ sectionId }) {
             className={styles.textfield}
           />
           <DialogContentText>
-            Valfritt: Lägg till mängd av artikeln i heltal, t.ex.&nbsp;<q>1</q>
-            &nbsp;eller&nbsp;<q>10</q>
+            Valfritt: Lägg till mängd av artikeln i heltal,
+            t.ex.&nbsp;&quot;1&quot;&nbsp;eller&nbsp;&quot;10&quot;
           </DialogContentText>
           <TextField
             value={articleAmount}
@@ -99,8 +98,8 @@ export default function AddArticleButton({ sectionId }) {
             className={styles.textfield}
           />
           <DialogContentText>
-            Valfritt: Lägg till typ av enhet t.ex.&nbsp;<q>Påse</q>
-            ,&nbsp;<q>Liter</q>&nbsp;eller&nbsp;<q>g</q>
+            Valfritt: Lägg till typ av enhet t.ex.&nbsp;&quot;Påse&quot;
+            &quot;Liter&quot;&nbsp;eller&nbsp;&quot;g&quot;
           </DialogContentText>
           <TextField
             value={typeOfAmount}
@@ -111,8 +110,7 @@ export default function AddArticleButton({ sectionId }) {
             className={styles.textfield}
           />
           <DialogContentText>
-            Valfritt: Lägg till ett bäst-före-datum i följade format&nbsp;
-            <q>2023-06-01</q>
+            Valfritt: Lägg till ett bäst-före-datum i följade format&nbsp;&quot;2023-06-01&quot;
           </DialogContentText>
           <TextField
             value={bestBefore}

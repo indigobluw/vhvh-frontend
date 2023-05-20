@@ -16,19 +16,19 @@ export default function OurUsers({ sorting }) {
   const url3 = `http://localhost:8080/api/showusersbyfirstname`;
   const url4 = `http://localhost:8080/api/showusersbylastname`;
 
-  const getURL = () => {
-    if (sorting === "default") {
-      return url;
-    } else if (sorting === "accountType") {
-      return url2;
-    } else if (sorting === "firstname") {
-      return url3;
-    } else if (sorting === "lastname") {
-      return url4;
-    }
-  };
-
   useEffect(() => {
+    const getURL = () => {
+      if (sorting === "default") {
+        return url;
+      } else if (sorting === "accountType") {
+        return url2;
+      } else if (sorting === "firstname") {
+        return url3;
+      } else if (sorting === "lastname") {
+        return url4;
+      }
+    };
+
     const fetchUsers = async () => {
       try {
         const fetchResponse = await fetch(getURL());
@@ -41,7 +41,7 @@ export default function OurUsers({ sorting }) {
     };
 
     fetchUsers();
-  }, [sorting]);
+  }, [sorting, url, url2, url3, url4]);
 
   return (
     <div>

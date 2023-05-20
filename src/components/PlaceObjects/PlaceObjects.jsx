@@ -34,7 +34,7 @@ export default function PlaceObjects() {
     };
 
     fetchPlaceNames();
-  }, []);
+  }, [url]);
 
   const handleToggleSection = (placeName) => {
     setShowSections((prevSections) => ({

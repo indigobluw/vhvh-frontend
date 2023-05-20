@@ -29,7 +29,7 @@ export default function SectionObjects({ placeId }) {
     };
 
     fetchSectionNames();
-  }, []);
+  }, [url]);
 
   const handleToggleArticle = (sectionName) => {
     setShowArticles((prevArticles) => ({

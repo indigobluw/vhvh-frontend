@@ -67,9 +67,9 @@ export default function AddSectionButton({ placeId }) {
         <DialogTitle>Skapa område</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Lägg till ett valfritt område, t.ex.&nbsp;<q>Kylskåpet</q>,&nbsp;
-            <q>Städskåpet</q>
-            eller&nbsp;<q>Kryddhyllan</q>
+            Lägg till ett valfritt område,
+            t.ex.&nbsp;&quot;Kylskåpet&quot;,&nbsp;&quot;Städskåpet&quot; eller
+            &quot;Kryddhyllan&quot;
           </DialogContentText>
           <TextField
             onChange={(e) => setSectionName(e.target.value)}

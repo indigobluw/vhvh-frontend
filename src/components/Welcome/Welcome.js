@@ -24,7 +24,7 @@ export default function Welcome() {
     };
 
     fetchUserFirstname();
-  }, []);
+  }, [url]);
 
   return <div>Välkommen {firstname}!</div>;
 }

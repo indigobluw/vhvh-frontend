@@ -37,7 +37,7 @@ export default function MyData() {
     };
 
     fetchUserFirstname();
-  }, []);
+  }, [url]);
 
   return (
     <div>
