@@ -39,6 +39,9 @@ export default function Navbar() {
           <Link href="/comingSoon">
             <li className={styles.li}>Om oss</li>
           </Link>
+          <Link href="/admin">
+            <li className={styles.li}>Admin</li>
+          </Link>
           <li className={styles.burger}>
             {phoneMenuOpen ? (
               <CloseIcon fontSize="large" onClick={openMenu} />
@@ -63,6 +66,9 @@ export default function Navbar() {
             </Link>
             <Link href="/comingSoon">
               <li className={styles.menuItem}>Om oss</li>
+            </Link>
+            <Link href="/admin">
+              <li className={styles.menuItem}>Admin</li>
             </Link>
           </ul>
         </div>
