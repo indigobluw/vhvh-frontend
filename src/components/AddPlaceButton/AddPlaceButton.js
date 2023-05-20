@@ -12,6 +12,7 @@ import jwt from "jsonwebtoken";
 export default function AddPlaceButton() {
   const [open, setOpen] = useState(false);
   const [placeName, setPlaceName] = useState("");
+  const [warningDuplicatedPlace, setWarningDuplicatedPlace] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -63,7 +64,7 @@ export default function AddPlaceButton() {
         sx={{
           fontWeight: "bold",
           backgroundColor: "#489fb5",
-          color: "#ffffff"
+          color: "#ffffff",
         }}
         variant="contained"
         type="submit"

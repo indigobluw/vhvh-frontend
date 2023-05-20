@@ -7,6 +7,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useState } from "react";
+import { useEffect } from "react";
 
 export default function AddArticleButton({ sectionId }) {
   const [open, setOpen] = useState(false);
@@ -14,6 +15,25 @@ export default function AddArticleButton({ sectionId }) {
   const [articleAmount, setArticleAmount] = useState("");
   const [typeOfAmount, setTypeOfAmount] = useState("");
   const [bestBefore, setBestBefore] = useState("");
+  const [invalidDate, setInvalidDate] = useState(false);
+  const [inavlidAmount, setInvalidAmount] = useState(false);
+
+  useEffect(() => {
+    const articleAmountRegex = /^[0-9]*$/;
+    const dateRegex = /^(\d{4}-\d{2}-\d{2})?$/;
+
+    if (!articleAmountRegex.test(articleAmount)) {
+      setInvalidAmount(true);
+    } else {
+      setInvalidAmount(false);
+    }
+
+    if (!dateRegex.test(bestBefore)) {
+      setInvalidDate(true);
+    } else {
+      setInvalidDate(false);
+    }
+  }, [articleAmount, bestBefore]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -75,11 +95,11 @@ export default function AddArticleButton({ sectionId }) {
         Lägg till artikel
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Lägg artkiel</DialogTitle>
+        <DialogTitle>Lägg till artkiel</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Lägg till ett namn på din artikel,
-            t.ex.&nbsp;&quot;Ost&quot;&nbsp;eller&nbsp;&quot;Toapappaer&quot;
+            t.ex.&nbsp;&quot;Goudaost&quot;&nbsp;eller&nbsp;&quot;Toapappaer&quot;
           </DialogContentText>
           <TextField
             onChange={(e) => setArticleName(e.target.value)}
@@ -100,6 +120,7 @@ export default function AddArticleButton({ sectionId }) {
             id="outlined-basic"
             label="Mängd"
             type="text"
+            error={inavlidAmount}
             className={styles.textfield}
           />
           <DialogContentText>
@@ -124,6 +145,7 @@ export default function AddArticleButton({ sectionId }) {
             id="outlined-basic"
             label="Bäst före"
             type="text"
+            error={invalidDate}
             className={styles.textfield}
           />
         </DialogContent>
