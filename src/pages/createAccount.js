@@ -206,13 +206,19 @@ export default function CreateAccount() {
               Jag förstår att VHVH sparar min mailadress
             </p>
           </div>
-          <Button variant="contained" type="submit" className={styles.button}>
+          <Button
+            sx={{ backgroundColor: "#489fb5" }}
+            variant="contained"
+            type="submit"
+            className={styles.button}
+          >
             Skapa användare
           </Button>
         </form>
         <Link href="/comingSoon">
           <p className={styles.terms}>
-            Genom att klicka på knappen&nbsp;&quot;Skapa Användare&quot;&nbsp;godkänner du våra användarvillkor*
+            Genom att klicka på knappen&nbsp;&quot;Skapa
+            Användare&quot;&nbsp;godkänner du våra användarvillkor*
           </p>
         </Link>
         <p className={styles.link}>

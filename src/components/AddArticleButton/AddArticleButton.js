@@ -62,6 +62,11 @@ export default function AddArticleButton({ sectionId }) {
   return (
     <div>
       <Button
+        sx={{
+          color: "#489fb5",
+          backgroundColor: "#ffffff",
+          fontWeight: "bold",
+        }}
         variant="contained"
         type="submit"
         className={styles.button}
@@ -110,7 +115,8 @@ export default function AddArticleButton({ sectionId }) {
             className={styles.textfield}
           />
           <DialogContentText>
-            Valfritt: Lägg till ett bäst-före-datum i följade format&nbsp;&quot;2023-06-01&quot;
+            Valfritt: Lägg till ett bäst-före-datum i följade
+            format&nbsp;&quot;2023-06-01&quot;
           </DialogContentText>
           <TextField
             value={bestBefore}

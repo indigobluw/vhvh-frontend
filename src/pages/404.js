@@ -10,7 +10,11 @@ export default function FyraNollFyra() {
         <h1>404 - Hittar inte sidan!</h1>
         <p className={styles.subTitle}>Eller något annat blev fel...</p>
         <Link href="/">
-          <Button variant="contained" className={styles.button}>
+          <Button
+            sx={{ color: "#ffffff", backgroundColor: "#489fb5" }}
+            variant="contained"
+            className={styles.button}
+          >
             Tillbaka hem
           </Button>
         </Link>

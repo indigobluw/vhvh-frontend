@@ -3,10 +3,10 @@ import CopyrightIcon from "@mui/icons-material/Copyright";
 
 export default function Footer() {
   return (
-    <div className={styles.container}>
+    <div>
       <div>
         <p className={styles.copyright}>
-          <CopyrightIcon />
+          <CopyrightIcon sx={{ color: "#ede7e3" }} />
           VHVH med ensamrätt
         </p>
       </div>

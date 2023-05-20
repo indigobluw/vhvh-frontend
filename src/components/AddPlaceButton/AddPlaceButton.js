@@ -60,6 +60,11 @@ export default function AddPlaceButton() {
   return (
     <div>
       <Button
+        sx={{
+          fontWeight: "bold",
+          backgroundColor: "#489fb5",
+          color: "#ffffff"
+        }}
         variant="contained"
         type="submit"
         className={styles.button}

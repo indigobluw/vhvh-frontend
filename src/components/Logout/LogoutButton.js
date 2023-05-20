@@ -35,6 +35,7 @@ export default function LogoutButton() {
   return (
     <div>
       <Button
+        sx={{ backgroundColor: "#000000", color: "#ffffff" }}
         variant="contained"
         type="submit"
         className={styles.button}

@@ -6,7 +6,7 @@ export default function DeleteSectionButton() {
   return (
     <div>
       <IconButton variant="contained" type="submit" className={styles.button}>
-        <DeleteIcon className={styles.icons}/>
+        <DeleteIcon sx={{ color: "#82c0cc" }} className={styles.icons} />
       </IconButton>
     </div>
   );

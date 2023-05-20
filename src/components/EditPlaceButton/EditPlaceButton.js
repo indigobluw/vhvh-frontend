@@ -6,7 +6,7 @@ export default function EditPlaceButton() {
   return (
     <div>
       <IconButton variant="contained" type="submit" className={styles.button}>
-        <EditIcon />
+        <EditIcon sx={{ color: "#82c0cc" }} />
       </IconButton>
     </div>
   );

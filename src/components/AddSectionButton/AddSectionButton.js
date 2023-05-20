@@ -56,6 +56,7 @@ export default function AddSectionButton({ placeId }) {
   return (
     <div>
       <Button
+        sx={{ fontWeight: "bold", backgroundColor: "#16697a", color:"#ffffff" }}
         variant="contained"
         type="submit"
         className={styles.button}

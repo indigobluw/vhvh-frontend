@@ -6,7 +6,7 @@ export default function DeletePlaceButton() {
   return (
     <div>
       <IconButton variant="contained" type="submit" className={styles.button}>
-        <DeleteIcon />
+        <DeleteIcon sx={{ color: "#82c0cc" }} />
       </IconButton>
     </div>
   );

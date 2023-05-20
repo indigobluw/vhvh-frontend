@@ -110,7 +110,7 @@ export default function Login() {
         </p>
         {isEmpty ? (
           <Button
-            sx={{ width: 150 }}
+            sx={{ width: 150, backgroundColor: "#489fb5" }}
             variant="contained"
             type="submit"
             className={styles.button}
@@ -120,7 +120,7 @@ export default function Login() {
           </Button>
         ) : (
           <Button
-            sx={{ width: 150 }}
+            sx={{ width: 150, backgroundColor: "#489fb5" }}
             variant="contained"
             type="submit"
             className={styles.button}
