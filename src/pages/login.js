@@ -17,6 +17,25 @@ export default function Login() {
   const [loginError, setLoginError] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [notValidEmail, setNotValidEmail] = useState(false);
+  const [passwordNotLongEnough, setPasswordNotLongEnough] = useState(false);
+
+  useEffect(() => {
+    const usernameRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^[a-zA-Z0-9]{8,}$/;
+
+    if (username && !usernameRegex.test(username)) {
+      setNotValidEmail(true);
+    } else {
+      setNotValidEmail(false);
+    }
+
+    if (password && !passwordRegex.test(password)) {
+      setPasswordNotLongEnough(true);
+    } else {
+      setPasswordNotLongEnough(false);
+    }
+  }, [username, password]);
 
   function sendLoginRequest() {
     setIsLoading(true);
@@ -98,6 +117,7 @@ export default function Login() {
           label="Användarnamn"
           type="username"
           helperText="Användarnamnet är din mail-adress"
+          error={notValidEmail}
           className={styles.username}
         />
         <TextField
@@ -108,6 +128,7 @@ export default function Login() {
           label="Lösenord"
           type="password"
           autoComplete="current-password"
+          error={passwordNotLongEnough}
           className={styles.password}
         />
         <p className={styles.forgotPassword}>

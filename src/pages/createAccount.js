@@ -38,25 +38,28 @@ export default function CreateAccount() {
     setRole(event.target.value);
   };
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    setIsLoading(true);
-    
+  useEffect(() => {
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
     const usernameRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!passwordRegex.test(password)) {
+    if (password && !passwordRegex.test(password)) {
       setInvalidPassword(true);
-      return;
+    } else {
+      setInvalidPassword(false);
     }
-    if (password !== passwordDuplicated) {
+    if (password && password !== passwordDuplicated) {
       setNoMatchPassword(true);
-      return;
+    } else {
+      setNoMatchPassword(false);
     }
-    if (!usernameRegex.test(username)) {
+    if (username && !usernameRegex.test(username)) {
       setInvalidUsername(true);
-      return;
     }
+  }, [password, username, passwordDuplicated]);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setIsLoading(true);
 
     const headers = new Headers();
     headers.append("Content-Type", "application/json");

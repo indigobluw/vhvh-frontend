@@ -72,7 +72,7 @@ export default function AddPlaceButton() {
         sx={{
           fontWeight: "bold",
           backgroundColor: "#489fb5",
-          color: "#ffffff"
+          color: "#ffffff",
         }}
         variant="contained"
         type="submit"

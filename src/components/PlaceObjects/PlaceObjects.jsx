@@ -11,6 +11,8 @@ export default function PlaceObjects() {
   const [placeNames, setPlaceNames] = useState([]);
   const [placeIds, setPlaceIds] = useState([]);
   const [showSections, setShowSections] = useState({});
+
+
   const token =
     typeof localStorage !== "undefined" ? localStorage.getItem("token") : null;
   const decodedToken = jwt.decode(token);
