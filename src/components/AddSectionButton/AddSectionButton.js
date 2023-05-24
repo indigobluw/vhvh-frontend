@@ -7,10 +7,14 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useState } from "react";
+import { useEffect } from "react";
+import { Alert } from "@mui/material";
 
 export default function AddSectionButton({ placeId }) {
   const [open, setOpen] = useState(false);
   const [sectionName, setSectionName] = useState("");
+  const [sectionAlreadyExists, setSectionAlreadyExists] = useState(false);
+  const [placeNotExisting, setPlaceNotExisting] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -44,6 +48,12 @@ export default function AddSectionButton({ placeId }) {
           console.log("Du har skapat ett område");
           setOpen(false);
           return response.json();
+        } else if (response.status === 409) {
+          console.log("Finns redan en identisk sektion");
+          setSectionAlreadyExists(true);
+        } else if (response.status === 404) {
+          console.log("Plats kan inte hittas...");
+          setPlaceNotExisting(true);
         } else {
           setOpen(true);
           console.log("Oj! Något gick fel!");
@@ -53,10 +63,18 @@ export default function AddSectionButton({ placeId }) {
       .catch((error) => console.log("error", error));
   }
 
+  useEffect(() => {
+    setSectionAlreadyExists(false);
+  }, [sectionName]);
+
   return (
     <div>
       <Button
-        sx={{ fontWeight: "bold", backgroundColor: "#16697a", color:"#ffffff" }}
+        sx={{
+          fontWeight: "bold",
+          backgroundColor: "#16697a",
+          color: "#ffffff",
+        }}
         variant="contained"
         type="submit"
         className={styles.button}
@@ -65,6 +83,11 @@ export default function AddSectionButton({ placeId }) {
         Lägg till område
       </Button>
       <Dialog open={open} onClose={handleClose}>
+        {placeNotExisting && (
+          <Alert severity="error">
+            Kan inte hitta Platsen du försöker lägga till ett Område i
+          </Alert>
+        )}
         <DialogTitle>Skapa område</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -75,6 +98,12 @@ export default function AddSectionButton({ placeId }) {
           <TextField
             onChange={(e) => setSectionName(e.target.value)}
             value={sectionName}
+            helperText={
+              sectionAlreadyExists
+                ? "Det finns redan ett område med samma namn inom denna Plats"
+                : ""
+            }
+            error={sectionAlreadyExists}
             autoFocus
             margin="dense"
             id="name"
