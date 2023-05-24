@@ -8,11 +8,12 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useState } from "react";
 import jwt from "jsonwebtoken";
+import { useEffect } from "react";
 
 export default function AddPlaceButton() {
   const [open, setOpen] = useState(false);
   const [placeName, setPlaceName] = useState("");
-  const [warningDuplicatedPlace, setWarningDuplicatedPlace] = useState(false);
+  const [placeAlreadyExists, setPlaceAlreadyExists] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -49,6 +50,9 @@ export default function AddPlaceButton() {
           console.log("Du har skapat en plats");
           setOpen(false);
           return response.json();
+        } else if (response.status === 409) {
+          console.log("Finns redan en plats med samma namn");
+          setPlaceAlreadyExists(true);
         } else {
           setOpen(true);
           console.log("Oj! Något gick fel!");
@@ -57,6 +61,10 @@ export default function AddPlaceButton() {
       })
       .catch((error) => console.log("error", error));
   }
+
+  useEffect(() => {
+    setPlaceAlreadyExists(false);
+  }, [placeName]);
 
   return (
     <div>
@@ -90,6 +98,11 @@ export default function AddPlaceButton() {
             type="text"
             fullWidth
             variant="standard"
+            helperText={placeAlreadyExists 
+            ? "Du har redan en plats med det här namnet"
+            : ""
+            }
+            error={placeAlreadyExists}
             required
           />
         </DialogContent>

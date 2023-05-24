@@ -8,6 +8,7 @@ import Link from "next/link";
 import Alert from "@mui/material/Alert";
 import { useEffect } from "react";
 import * as React from "react";
+import { CircularProgress } from "@mui/material";
 
 export default function Login() {
   const router = useRouter();
@@ -15,6 +16,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [notValidEmail, setNotValidEmail] = useState(false);
   const [passwordNotLongEnough, setPasswordNotLongEnough] = useState(false);
 
@@ -36,6 +38,7 @@ export default function Login() {
   }, [username, password]);
 
   function sendLoginRequest() {
+    setIsLoading(true);
     const requestBody = {
       username: username,
       password: password,
@@ -82,6 +85,9 @@ export default function Login() {
       })
       .catch((error) => {
         console.error(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }
 
@@ -146,8 +152,10 @@ export default function Login() {
             type="submit"
             className={styles.button}
             onClick={() => sendLoginRequest()}
-          >
-            Logga in
+          > {isLoading ? ( <CircularProgress size={25} color="inherit"/>
+
+          ) : (
+            "Logga in")}
           </Button>
         )}
       </div>

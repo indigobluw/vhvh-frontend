@@ -54,7 +54,7 @@ export default function SectionObjects({ placeId }) {
                       className={styles.button}
                       onClick={() => handleToggleArticle(sectionName)}
                     >
-                      <KeyboardArrowDownIcon sx={{ color: "#82c0cc" }} />
+                      <KeyboardArrowDownIcon sx={{ color: "#489fb5" }} />
                     </IconButton>
                   </div>
                   <EditSectionButton />

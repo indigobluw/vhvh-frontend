@@ -12,7 +12,7 @@ import FormControl from "@mui/material/FormControl";
 import { useRouter } from "next/router";
 import Alert from "@mui/material/Alert";
 import Checkbox from "@mui/material/Checkbox";
-import { FormControlLabel } from "@mui/material";
+import { CircularProgress, FormControlLabel } from "@mui/material";
 import { useEffect } from "react";
 
 export default function CreateAccount() {
@@ -28,6 +28,11 @@ export default function CreateAccount() {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
+  var scrollToTop = function () {
+    window.scrollTo({top: 0, behavior: "smooth"});
+  };
 
   const handleChangedRole = (event) => {
     setRole(event.target.value);
@@ -54,6 +59,7 @@ export default function CreateAccount() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    setIsLoading(true);
 
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
@@ -82,7 +88,11 @@ export default function CreateAccount() {
         }
         return response.json();
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.log("error", error))
+      .finally(() => {
+        setIsLoading(false);
+        scrollToTop();
+      });
   }
 
   useEffect(() => {
@@ -215,7 +225,11 @@ export default function CreateAccount() {
             type="submit"
             className={styles.button}
           >
-            Skapa användare
+            {isLoading ? (
+              <CircularProgress size={25} color="inherit" />
+            ) : (
+              "Skapa användare"
+            )}
           </Button>
         </form>
         <Link href="/comingSoon">
