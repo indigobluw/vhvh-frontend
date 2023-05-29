@@ -117,7 +117,6 @@ export default function ChangeMyDataButton() {
             className={styles.textfield}
           />
           <TextField
-            required
             value={updatedLastname}
             onChange={(e) => setUpdatedLastname(e.target.value)}
             id="outlined-basic-2"
