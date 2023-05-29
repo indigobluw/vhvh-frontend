@@ -31,7 +31,7 @@ export default function CreateAccount() {
   const [isLoading, setIsLoading] = useState(false);
 
   var scrollToTop = function () {
-    window.scrollTo({top: 0, behavior: "smooth"});
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleChangedRole = (event) => {
@@ -41,6 +41,7 @@ export default function CreateAccount() {
   useEffect(() => {
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
     const usernameRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isUsernameValid = usernameRegex.test(username);
 
     if (password && !passwordRegex.test(password)) {
       setInvalidPassword(true);
@@ -52,8 +53,10 @@ export default function CreateAccount() {
     } else {
       setNoMatchPassword(false);
     }
-    if (username && !usernameRegex.test(username)) {
+    if (username && !isUsernameValid) {
       setInvalidUsername(true);
+    } else {
+      setInvalidUsername(false);
     }
   }, [password, username, passwordDuplicated]);
 
