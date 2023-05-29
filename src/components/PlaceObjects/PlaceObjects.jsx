@@ -60,7 +60,7 @@ export default function PlaceObjects() {
                       type="submit"
                       onClick={() => handleToggleSection(placeName)}
                     >
-                      <KeyboardArrowDownIcon sx={{ color: "#ede7e3" }} />
+                      <KeyboardArrowDownIcon sx={{ color: "#82c0cc" }} />
                     </IconButton>
                   </div>
                   <EditPlaceButton />
